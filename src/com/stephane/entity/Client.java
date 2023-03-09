@@ -2,6 +2,8 @@ package com.stephane.entity;
 
 import com.stephane.exceptions.ReversoException;
 
+import java.util.ArrayList;
+
 public class Client extends Societe{
 
     private static int idClient = 0;
@@ -14,6 +16,7 @@ public class Client extends Societe{
         this.setChiffreAffaires(chiffreAffaires);
         this.setNbEmployes(nbEmployes);
         idClient++;
+        Clients.getListClients().add(this);
     }
 
     public double getChiffreAffaires(){

@@ -16,6 +16,7 @@ public class Prospect extends Societe{
         this.setDateProspection(dateProspection);
         this.setInteret(interet);
         idProspect++;
+        Prospects.getListProspects().add(this);
     }
 
     public LocalDate getDateProspection(){

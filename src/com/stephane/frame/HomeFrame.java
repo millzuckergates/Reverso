@@ -1,10 +1,8 @@
 package com.stephane.frame;
 
-import com.stephane.entity.Crud;
+import com.stephane.entity.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,12 +22,15 @@ public class HomeFrame extends JFrame{
     private JPanel homePanelListe;
     private JLabel choixLabel;
     private JLabel titreLabel;
+    private JPanel choixPanel;
+    private JButton menuPrincipalButton;
     public static Crud choix;
     public static Crud crud;
 
     public HomeFrame(){
         initComponent();
         actionListener();
+        System.out.println(Clients.getListClients());
     }
 
     public void initComponent(){
@@ -38,6 +39,7 @@ public class HomeFrame extends JFrame{
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
         // Options
         homePanelCrud.setVisible(false);
         homePanelListe.setVisible(false);
@@ -49,6 +51,7 @@ public class HomeFrame extends JFrame{
      * Contient tous les listener
      */
     public void actionListener(){
+
         /**
          * Clic sur le bouton Prospect
          */
@@ -58,6 +61,11 @@ public class HomeFrame extends JFrame{
                 choix = Crud.PROSPECTS;
                 affichageCrud();
                 choixLabel.setText("Gestion des prospects");
+                homePanelListe.setVisible(false);
+                comboBox.removeAllItems();
+                for(Prospect prospect : Prospects.getListProspects()){
+                    comboBox.addItem(prospect.getRaisonSociale());
+                }
             }
         });
 
@@ -70,6 +78,11 @@ public class HomeFrame extends JFrame{
                 choix = Crud.CLIENTS;
                 affichageCrud();
                 choixLabel.setText("Gestion des clients");
+                homePanelListe.setVisible(false);
+                comboBox.removeAllItems();
+                for(Client client : Clients.getListClients()){
+                    comboBox.addItem(client.getRaisonSociale());
+                }
             }
         });
 
@@ -81,14 +94,72 @@ public class HomeFrame extends JFrame{
             public void actionPerformed(ActionEvent e){
                 switch(choix){
                     case PROSPECTS:
-                        ListFrame listFrameProspects = new ListFrame(Crud.PROSPECTS);
+                        ListFrame listProspects = new ListFrame(Crud.PROSPECTS);
                         break;
                     case CLIENTS:
-                        ListFrame listFrameClients = new ListFrame(Crud.CLIENTS);
+                        ListFrame listClients = new ListFrame(Crud.CLIENTS);
                         break;
                 }
             }
         });
+
+        /**
+         * Clic sur le bouton Ajouter
+         */
+        ajouterButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                switch(choix){
+                case PROSPECTS:
+                    CrudFrame crudProspects = new CrudFrame(Crud.PROSPECTS);
+                    break;
+                case CLIENTS:
+                    CrudFrame crudClients = new CrudFrame(Crud.CLIENTS);
+                    break;
+                }
+            }
+        });
+
+        /**
+         * Clic sur le bouton Modifier
+         */
+        modifierButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                homePanelListe.setVisible(true);
+                validerButton.setText("Modifier");
+                crud = Crud.MODIFIER;
+            }
+        });
+
+        /**
+         * Clic sur le bouton Supprimer
+         */
+        supprimerButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                homePanelListe.setVisible(true);
+                validerButton.setText("Supprimer");
+            }
+        });
+
+        /**
+         * Clic sur le bouton Valider
+         */
+        validerButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                if(validerButton.getText().equals("Modifier")){
+                    CrudFrame crudModifier = new CrudFrame(choix);
+                    System.out.println(choix);
+                }
+                if(validerButton.getText().equals("Supprimer")){
+                    CrudFrame crudSupprimer = new CrudFrame(choix);
+                    System.out.println(choix);
+                }
+            }
+        });
+
     }
 
     /**
