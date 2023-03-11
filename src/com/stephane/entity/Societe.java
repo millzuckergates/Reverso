@@ -14,7 +14,7 @@ public abstract class Societe{
     private String commentaire;
 
     public Societe(String raisonSociale,String numRue,String rue,String codePostal,String ville,String tel,
-            String email) throws ReversoException{
+            String email, String commentaire) throws ReversoException{
         this.setIdSociete(idSociete);
         this.setRaisonSociale(raisonSociale);
         this.setNumRue(numRue);
@@ -23,6 +23,7 @@ public abstract class Societe{
         this.setVille(ville);
         this.setTel(tel);
         this.setEmail(email);
+        this.setCommentaire(commentaire);
     }
 
     public int getIdSociete(){

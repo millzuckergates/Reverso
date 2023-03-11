@@ -11,8 +11,8 @@ public class Client extends Societe{
     private int nbEmployes;
 
     public Client(String raisonSociale,String numRue,String rue,String codePostal,String ville,String tel,
-            String email,double chiffreAffaires,int nbEmployes) throws ReversoException{
-        super(raisonSociale,numRue,rue,codePostal,ville,tel,email);
+            String email,String commentaire, double chiffreAffaires,int nbEmployes) throws ReversoException{
+        super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
         this.setChiffreAffaires(chiffreAffaires);
         this.setNbEmployes(nbEmployes);
         idClient++;

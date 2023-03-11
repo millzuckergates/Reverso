@@ -7,16 +7,17 @@ import java.time.format.DateTimeFormatter;
 
 public class Prospect extends Societe{
     private static int idProspect = 0;
-    private LocalDate dateProspection;
+    private LocalDate dateProspection = LocalDate.now();
     private String interet;
 
-    public Prospect(String raisonSociale,String numRue,String rue,String codePostal,String ville,
-            String tel,String email,LocalDate dateProspection,String interet) throws ReversoException{
-        super(raisonSociale,numRue,rue,codePostal,ville,tel,email);
+    public Prospect(String raisonSociale,String numRue,String rue,
+            String codePostal,String ville,String tel,String email,
+            String commentaire, LocalDate dateProspection,String interet)
+            throws ReversoException{
+        super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
         this.setDateProspection(dateProspection);
         this.setInteret(interet);
         idProspect++;
-        Prospects.getListProspects().add(this);
     }
 
     public LocalDate getDateProspection(){
@@ -24,8 +25,10 @@ public class Prospect extends Societe{
     }
 
     public void setDateProspection(LocalDate dateProspection){
-//        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        this.dateProspection = LocalDate.parse(, format);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dateProspection.format(formatter);
+        this.dateProspection = dateProspection;
+
     }
 
     public String getInteret(){

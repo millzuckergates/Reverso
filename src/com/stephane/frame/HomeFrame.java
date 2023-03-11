@@ -30,7 +30,6 @@ public class HomeFrame extends JFrame{
     public HomeFrame(){
         initComponent();
         actionListener();
-        System.out.println(Clients.getListClients());
     }
 
     public void initComponent(){
@@ -111,6 +110,7 @@ public class HomeFrame extends JFrame{
             public void actionPerformed(ActionEvent e){
                 switch(choix){
                 case PROSPECTS:
+                    HomeFrame.crud = Crud.AJOUTER;
                     CrudFrame crudProspects = new CrudFrame(Crud.PROSPECTS);
                     break;
                 case CLIENTS:
@@ -160,6 +160,13 @@ public class HomeFrame extends JFrame{
             }
         });
 
+        quitterButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+        });
+
     }
 
     /**
@@ -177,8 +184,6 @@ public class HomeFrame extends JFrame{
                 homePanelCrud.setVisible(true);
                 break;
         }
-
-
 
     };
 
