@@ -15,8 +15,6 @@ public class Client extends Societe{
         super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
         this.setChiffreAffaires(chiffreAffaires);
         this.setNbEmployes(nbEmployes);
-        idClient++;
-        Clients.getListClients().add(this);
     }
 
     public double getChiffreAffaires(){

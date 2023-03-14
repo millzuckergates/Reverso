@@ -13,6 +13,7 @@ public abstract class Societe{
     private String email;
     private String commentaire;
 
+
     public Societe(String raisonSociale,String numRue,String rue,String codePostal,String ville,String tel,
             String email, String commentaire) throws ReversoException{
         this.setIdSociete(idSociete);

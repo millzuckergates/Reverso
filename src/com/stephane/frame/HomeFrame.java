@@ -26,6 +26,8 @@ public class HomeFrame extends JFrame{
     private JButton menuPrincipalButton;
     public static Crud choix;
     public static Crud crud;
+    private Societe choixSociete;
+
 
     public HomeFrame(){
         initComponent();
@@ -61,7 +63,9 @@ public class HomeFrame extends JFrame{
                 affichageCrud();
                 choixLabel.setText("Gestion des prospects");
                 homePanelListe.setVisible(false);
+                // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
+                // Remplissage de la combobox
                 for(Prospect prospect : Prospects.getListProspects()){
                     comboBox.addItem(prospect.getRaisonSociale());
                 }
@@ -78,7 +82,9 @@ public class HomeFrame extends JFrame{
                 affichageCrud();
                 choixLabel.setText("Gestion des clients");
                 homePanelListe.setVisible(false);
+                // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
+                // Remplissage de la combobox
                 for(Client client : Clients.getListClients()){
                     comboBox.addItem(client.getRaisonSociale());
                 }
@@ -94,9 +100,11 @@ public class HomeFrame extends JFrame{
                 switch(choix){
                     case PROSPECTS:
                         ListFrame listProspects = new ListFrame(Crud.PROSPECTS);
+                        dispose();
                         break;
                     case CLIENTS:
                         ListFrame listClients = new ListFrame(Crud.CLIENTS);
+                        dispose();
                         break;
                 }
             }
@@ -111,10 +119,13 @@ public class HomeFrame extends JFrame{
                 switch(choix){
                 case PROSPECTS:
                     HomeFrame.crud = Crud.AJOUTER;
-                    CrudFrame crudProspects = new CrudFrame(Crud.PROSPECTS);
+                    CrudFrame crudProspects = new CrudFrame(Crud.PROSPECTS, choixSociete);
+                    dispose();
                     break;
                 case CLIENTS:
-                    CrudFrame crudClients = new CrudFrame(Crud.CLIENTS);
+                    HomeFrame.crud = Crud.AJOUTER;
+                    CrudFrame crudClients = new CrudFrame(Crud.CLIENTS, choixSociete);
+                    dispose();
                     break;
                 }
             }
@@ -140,6 +151,7 @@ public class HomeFrame extends JFrame{
             public void actionPerformed(ActionEvent e){
                 homePanelListe.setVisible(true);
                 validerButton.setText("Supprimer");
+                crud = Crud.SUPPRIMER;
             }
         });
 
@@ -150,12 +162,23 @@ public class HomeFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 if(validerButton.getText().equals("Modifier")){
-                    CrudFrame crudModifier = new CrudFrame(choix);
-                    System.out.println(choix);
+                    int index = comboBox.getSelectedIndex();
+
+                    switch(choix){
+                        case PROSPECTS:
+                            choixSociete = Prospects.getListProspects().get(index);
+                            dispose();
+                            break;
+                        case CLIENTS:
+                            choixSociete = Clients.getListClients().get(index);
+                            dispose();
+                            break;
+                    }
+                    CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete);
                 }
                 if(validerButton.getText().equals("Supprimer")){
-                    CrudFrame crudSupprimer = new CrudFrame(choix);
-                    System.out.println(choix);
+                    CrudFrame crudSupprimer = new CrudFrame(choix, choixSociete);
+                    dispose();
                 }
             }
         });

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Prospect extends Societe{
+
     private static int idProspect = 0;
     private LocalDate dateProspection = LocalDate.now();
     private String interet;
@@ -17,7 +18,6 @@ public class Prospect extends Societe{
         super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
         this.setDateProspection(dateProspection);
         this.setInteret(interet);
-        idProspect++;
     }
 
     public LocalDate getDateProspection(){
@@ -37,5 +37,13 @@ public class Prospect extends Societe{
 
     public void setInteret(String interet){
         this.interet = interet;
+    }
+
+    public static int getIdProspect(){
+        return idProspect;
+    }
+
+    public static void setIdProspect(int idProspect){
+        Prospect.idProspect = idProspect;
     }
 }
