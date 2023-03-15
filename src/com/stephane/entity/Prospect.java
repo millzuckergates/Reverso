@@ -1,3 +1,10 @@
+/**
+ *  La classe Prospect hérite de la classe Societe et représente un prospect d'une entreprise.
+ *
+ * @author Mill Zuckergates
+ * @version 1.0
+ */
+
 package com.stephane.entity;
 
 import com.stephane.exceptions.ReversoException;
@@ -5,12 +12,25 @@ import com.stephane.exceptions.ReversoException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Prospect extends Societe{
 
+public class Prospect extends Societe{
     private static int idProspect = 0;
     private LocalDate dateProspection = LocalDate.now();
     private String interet;
 
+    /**
+     * @param raisonSociale Le nom de l'entreprise
+     * @param numRue    Le numéro d'habitation
+     * @param rue   Le nom de la rue
+     * @param codePostal Le code postal
+     * @param ville Le nom de la ville
+     * @param tel   Le numéro de téléphone
+     * @param email L'adresse email
+     * @param commentaire Commentaire sur la société (facultatif)
+     * @param dateProspection La date de prospection
+     * @param interet Interessement du client (Oui ou Non)
+     * @throws ReversoException
+     */
     public Prospect(String raisonSociale,String numRue,String rue,
             String codePostal,String ville,String tel,String email,
             String commentaire, LocalDate dateProspection,String interet)
@@ -25,8 +45,6 @@ public class Prospect extends Societe{
     }
 
     public void setDateProspection(LocalDate dateProspection){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        dateProspection.format(formatter);
         this.dateProspection = dateProspection;
 
     }

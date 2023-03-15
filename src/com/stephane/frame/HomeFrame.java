@@ -1,3 +1,11 @@
+/**
+ *  La classe HomeFrame ouvre la frame d'accueil qui donne accès aux differentes
+ actions possibles (Ajouter, modifier, supprimer un client/prospect...)
+ *
+ * @author Mill Zuckergates
+ * @version 1.0
+ */
+
 package com.stephane.frame;
 
 import com.stephane.entity.*;
@@ -29,11 +37,17 @@ public class HomeFrame extends JFrame{
     private Societe choixSociete;
 
 
+    /**
+     * Constructeur de la frame
+     */
     public HomeFrame(){
         initComponent();
         actionListener();
     }
 
+    /**
+     * Initialisation de la frame avec ses paramètres.
+     */
     public void initComponent(){
         // Paramètres de frame
         setContentPane(homePanel);
@@ -49,7 +63,7 @@ public class HomeFrame extends JFrame{
     }
 
     /**
-     * Contient tous les listener
+     * Contient tous les ActionListener
      */
     public void actionListener(){
 
@@ -190,6 +204,9 @@ public class HomeFrame extends JFrame{
             }
         });
 
+        /**
+         * Clic sur le bouton Quitter
+         */
         quitterButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){

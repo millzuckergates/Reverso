@@ -1,3 +1,10 @@
+/**
+ *  Cette classe contient une liste de tous les prospects enregistrés.
+ *
+ * @author Mill Zuckergates
+ * @version 1.0
+ */
+
 package com.stephane.entity;
 
 import java.util.ArrayList;

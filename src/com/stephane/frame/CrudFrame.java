@@ -1,3 +1,11 @@
+/**
+ *  La classe CrudFrame ouvre la frame dans laquelle l'utilisateur
+ remplit le formulaire ou le modifie en fonction du choix (Client ou Prospect)
+ *
+ * @author Mill Zuckergates
+ * @version 1.0
+ */
+
 package com.stephane.frame;
 
 import com.stephane.entity.*;
@@ -36,6 +44,12 @@ public class CrudFrame extends JFrame{
     private Choix choix;
     private Crud crud;
 
+    /**
+     * Constructeur de la frame
+     * @param choix Variable de choix (Prospect ou Client)
+     * @param choixSociete Variable du choix de la société choisie
+     * @param crud Variable contenant une enum (AJOUTER, MODIFIER, SUPPRIMER...)
+     */
     public CrudFrame(Choix choix, Societe choixSociete, Crud crud){
         this.choix = choix;
         this.choixSociete = choixSociete;
@@ -45,6 +59,9 @@ public class CrudFrame extends JFrame{
         actionListener();
     }
 
+    /**
+     * Initialisation de la frame avec ses paramètres.
+     */
     public void initComponent(){
         // Paramètres de frame
         setContentPane(crudPanel);
@@ -59,14 +76,14 @@ public class CrudFrame extends JFrame{
 
     /**
      * Enregistre les données du client ou prospect
-     * @param raisonSociale
-     * @param numeroRue
-     * @param nomRue
-     * @param codePostal
-     * @param ville
-     * @param tel
-     * @param email
-     * @param commentaire
+     * @param raisonSociale Le nom de l'entreprise
+     * @param numeroRue Le numéro d'habitation
+     * @param nomRue Le nom de la rue
+     * @param codePostal Le code postal
+     * @param ville Le nom de la ville
+     * @param tel Le numéro de téléphone
+     * @param email L'adresse email
+     * @param commentaire Commentaire sur la société (facultatif)
      */
     private void setSociete(
             String raisonSociale,
@@ -107,6 +124,10 @@ public class CrudFrame extends JFrame{
         textFieldCommentaire.setText(choixSociete.getCommentaire());
     }
 
+    /**
+     * Méthode d'affichage des données lors de l'ouverture de la frame pour
+     l'ajout, la modification ou la supression d'une société.
+     */
     public void affichage(){
         switch(choix){
             case PROSPECTS:
@@ -126,6 +147,7 @@ public class CrudFrame extends JFrame{
         switch(crud){
             case MODIFIER:
             case SUPPRIMER:
+                // Rend les champs impossible à editer
                 if(crud == Crud.SUPPRIMER){
                     labelTitre.setText("SUPPRIMER");
                     textFieldRaison.setEditable(false);
@@ -183,19 +205,23 @@ public class CrudFrame extends JFrame{
                     switch(crud){
                         case AJOUTER:
                             switch(choix){
+                                // Traitement de l'ajout d'un prospect
                                 case PROSPECTS:
                                     Prospect.setIdProspect(Prospect.getIdProspect()+1);
+                                    // Formattage de la date en format jour/mois/année
                                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                    // Remplace les / éventuels en -
                                     String replace = textFieldDateProspection.getText().replaceAll("-", "/");
                                     LocalDate dateProspection = LocalDate.parse(replace, formatter);
                                     String interet = textFieldInteret.getText();
                                     Prospect prospect = new Prospect(raisonSociale,numeroRue,nomRue,codePostal,ville,tel,email,commentaire,dateProspection,interet);
+                                    // Ajoute le prospect dans la lise
                                     Prospects.getListProspects().add(prospect);
                                     JOptionPane.showMessageDialog(null,"Le prospect a bien été ajouté");
-                                    System.out.println(prospect.getDateProspection());
                                     dispose();
                                     HomeFrame homeFrameProspects = new HomeFrame();
                                     break;
+                                // Traitement de l'ajout d'un client
                                 case CLIENTS:
                                     Client.setIdClient(Client.getIdClient()+1);
                                     Double chiffreAffaires = Double.parseDouble(textFieldChiffreAffaires.getText());
@@ -254,6 +280,9 @@ public class CrudFrame extends JFrame{
             }
         });
 
+        /**
+         * Clic sur le bouton de retour au menu
+         */
         menuButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){

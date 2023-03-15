@@ -1,3 +1,10 @@
+/**
+ *  Cette classe abstraite représente une société avec ses informations de base
+ *
+ * @author Mill Zuckergates
+ * @version 1.0
+ */
+
 package com.stephane.entity;
 
 import com.stephane.exceptions.ReversoException;
@@ -13,7 +20,18 @@ public abstract class Societe{
     private String email;
     private String commentaire;
 
-
+    /**
+     *
+     * @param raisonSociale Le nom de l'entreprise
+     * @param numRue    Le numéro d'habitation
+     * @param rue   Le nom de la rue
+     * @param codePostal Le code postal
+     * @param ville Le nom de la ville
+     * @param tel   Le numéro de téléphone
+     * @param email L'adresse email
+     * @param commentaire Commentaire sur la société (facultatif)
+     * @throws ReversoException
+     */
     public Societe(String raisonSociale,String numRue,String rue,String codePostal,String ville,String tel,
             String email, String commentaire) throws ReversoException{
         this.setIdSociete(idSociete);
@@ -40,8 +58,9 @@ public abstract class Societe{
     }
 
     /**
-     *
-     * @param raisonSociale
+     * Modifie le nom de la société
+     * @param raisonSociale Le nom de la société. Ne doit pas être vide.
+     * @throws ReversoException
      */
     public void setRaisonSociale(String raisonSociale) throws ReversoException{
         if(!raisonSociale.isEmpty()){
@@ -55,6 +74,11 @@ public abstract class Societe{
         return numRue;
     }
 
+    /**
+     * Modifie le numéro d'habitation
+     * @param numRue Le numéro d'habitation. Ne doit pas être vide
+     * @throws ReversoException
+     */
     public void setNumRue(String numRue) throws ReversoException{
         if(!numRue.isEmpty()){
             this.numRue = numRue;
@@ -67,6 +91,11 @@ public abstract class Societe{
         return rue;
     }
 
+    /**
+     * Modifie le nom de la rue
+     * @param rue Le nom de la rue. Ne doit pas être vide
+     * @throws ReversoException
+     */
     public void setRue(String rue) throws ReversoException{
         if(!rue.isEmpty()){
             this.rue = rue;
@@ -79,11 +108,16 @@ public abstract class Societe{
         return codePostal;
     }
 
+    /**
+     * Modifie le code postal
+     * @param codePostal Le code postal. Ne doit pas être vide. Doit contenir 5 caractères.
+     * @throws ReversoException
+     */
     public void setCodePostal(String codePostal) throws ReversoException{
-        if(!codePostal.isEmpty()){
+        if(!codePostal.isEmpty() && codePostal.length() == 5){
             this.codePostal = codePostal;
         }else{
-            throw new ReversoException("Le numéro de rue doit être saisi");
+            throw new ReversoException("Le numéro de rue doit être saisi et doit contenir 5 caractères.");
         }
     }
 
@@ -91,6 +125,11 @@ public abstract class Societe{
         return ville;
     }
 
+    /**
+     * Modifie la ville
+     * @param ville Le nom de la ville. Ne doit pas être vide
+     * @throws ReversoException
+     */
     public void setVille(String ville) throws ReversoException{
         if(!ville.isEmpty()){
             this.ville = ville;
@@ -103,6 +142,12 @@ public abstract class Societe{
         return tel;
     }
 
+    /**
+     * Modifie le numéro de téléphone
+     * @param tel Le numéro de téléphone. Doit contenir 10 caractères. Ne doit
+    pas contenir de lettres.
+     * @throws ReversoException
+     */
     public void setTel(String tel) throws ReversoException{
         if (tel.matches("\\d{10,}")){
             this.tel = tel;
@@ -115,6 +160,11 @@ public abstract class Societe{
         return email;
     }
 
+    /**
+     * Modifie l'adresse email
+     * @param email L'adresse email. Ne doit être vide. Doit contenir un @.
+     * @throws ReversoException
+     */
     public void setEmail(String email) throws ReversoException{
         if (!email.isEmpty() && email.matches("[^@]+@[^@]+")){
             this.email = email;
