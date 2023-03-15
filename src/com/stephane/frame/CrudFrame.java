@@ -56,6 +56,56 @@ public class CrudFrame extends JFrame{
         textFieldId.setVisible(false);
     }
 
+    /**
+     * Enregistre les données du client ou prospect
+     * @param raisonSociale
+     * @param numeroRue
+     * @param nomRue
+     * @param codePostal
+     * @param ville
+     * @param tel
+     * @param email
+     * @param commentaire
+     */
+    private void setSociete(
+            String raisonSociale,
+            String numeroRue,
+            String nomRue,
+            String codePostal,
+            String ville,
+            String tel,
+            String email,
+            String commentaire){
+        try{
+            choixSociete.setRaisonSociale(raisonSociale);
+            choixSociete.setNumRue(numeroRue);
+            choixSociete.setRue(nomRue);
+            choixSociete.setCodePostal(codePostal);
+            choixSociete.setVille(ville);
+            choixSociete.setTel(tel);
+            choixSociete.setEmail(email);
+            choixSociete.setCommentaire(commentaire);
+        }catch(ReversoException re){
+
+        }
+    }
+
+    /**
+     * Affiche les données récupérées dans les champs du formulaire
+     */
+    private void affichageChamps(){
+        labelId.setVisible(true);
+        textFieldId.setVisible(true);
+        textFieldRaison.setText(choixSociete.getRaisonSociale());
+        textFieldNumero.setText(choixSociete.getNumRue());
+        textFieldNomRue.setText(choixSociete.getRue());
+        textFieldCodePostal.setText(choixSociete.getCodePostal());
+        textFieldVille.setText(choixSociete.getVille());
+        textFieldTel.setText(choixSociete.getTel());
+        textFieldEmail.setText(choixSociete.getEmail());
+        textFieldCommentaire.setText(choixSociete.getCommentaire());
+    }
+
     public void affichage(){
         switch(choix){
             case PROSPECTS:
@@ -74,37 +124,40 @@ public class CrudFrame extends JFrame{
 
         switch(crud){
             case MODIFIER:
-                labelId.setVisible(true);
-                textFieldId.setVisible(true);
-                textFieldRaison.setText(choixSociete.getRaisonSociale());
-                textFieldNumero.setText(choixSociete.getNumRue());
-                textFieldNomRue.setText(choixSociete.getRue());
-                textFieldCodePostal.setText(choixSociete.getCodePostal());
-                textFieldVille.setText(choixSociete.getVille());
-                textFieldTel.setText(choixSociete.getTel());
-                textFieldEmail.setText(choixSociete.getEmail());
-                textFieldCommentaire.setText(choixSociete.getCommentaire());
+            case SUPPRIMER:
+                if(crud == Crud.SUPPRIMER){
+                    labelTitre.setText("SUPPRIMER");
+                    textFieldRaison.setEditable(false);
+                    textFieldNumero.setEditable(false);
+                    textFieldNomRue.setEditable(false);
+                    textFieldCodePostal.setEditable(false);
+                    textFieldVille.setEditable(false);
+                    textFieldTel.setEditable(false);
+                    textFieldEmail.setEditable(false);
+                    textFieldCommentaire.setEditable(false);
+                    textFieldNombreEmployes.setEditable(false);
+                    textFieldChiffreAffaires.setEditable(false);
+                    textFieldInteret.setEditable(false);
+                    textFieldDateProspection.setEditable(false);
+                }
+                labelTitre.setText("MODIFIER");
+                affichageChamps();
                 switch(choix){
                     case CLIENTS:
-                            Client choixClient = (Client)choixSociete;
-                            textFieldChiffreAffaires.setText(Double.toString(choixClient.getChiffreAffaires()));
-                            textFieldNombreEmployes.setText(Integer.toString(choixClient.getNbEmployes()));
-                            break;
+                        Client choixClient = (Client)choixSociete;
+                        textFieldChiffreAffaires.setText(Double.toString(choixClient.getChiffreAffaires()));
+                        textFieldNombreEmployes.setText(Integer.toString(choixClient.getNbEmployes()));
+                        break;
                     case PROSPECTS:
                         Prospect choixProspect = (Prospect)choixSociete;
-                            textFieldDateProspection.setText(choixProspect.getDateProspection().toString());
-                            textFieldInteret.setText(choixProspect.getInteret());
-                            break;
+                        textFieldDateProspection.setText(choixProspect.getDateProspection().toString());
+                        textFieldInteret.setText(choixProspect.getInteret());
+                        break;
                 }
+            break;
             case AJOUTER:
-                switch(choix){
-                    case CLIENTS:
-                        labelTitre.setText("Ajouter un client");
-                        break;
-                    case PROSPECTS:
-                        labelTitre.setText("Ajouter un prospect");
-                        break;
-                }
+                labelTitre.setText("AJOUTER");
+            break;
         }
     }
 
@@ -153,14 +206,8 @@ public class CrudFrame extends JFrame{
                             }
                             break;
                         case MODIFIER:
-                            choixSociete.setRaisonSociale(raisonSociale);
-                            choixSociete.setNumRue(numeroRue);
-                            choixSociete.setRue(nomRue);
-                            choixSociete.setCodePostal(codePostal);
-                            choixSociete.setVille(ville);
-                            choixSociete.setTel(tel);
-                            choixSociete.setEmail(email);
-                            choixSociete.setCommentaire(commentaire);
+                            setSociete(raisonSociale, numeroRue, nomRue,
+                                    codePostal, ville, tel, email, commentaire);
                             switch(choix){
                                 case CLIENTS:
                                     Double chiffreAffaires = Double.parseDouble(textFieldChiffreAffaires.getText());
@@ -183,7 +230,20 @@ public class CrudFrame extends JFrame{
                                     HomeFrame homeFrameProspect = new HomeFrame();
                                     break;
                             }
-                        break;
+                            break;
+                        case SUPPRIMER:
+                            int choixSupprimer = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer cette société ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+                            if (choixSupprimer == JOptionPane.YES_OPTION) {
+                                switch(choix){
+                                    case CLIENTS:
+                                        Clients.getListClients().remove(choixSociete);
+                                    case PROSPECTS:
+                                        Prospects.getListProspects().remove(choixSociete);
+                                }
+                                JOptionPane.showMessageDialog(null, "La société a bien été supprimée");
+                                dispose();
+                                HomeFrame homeFrame = new HomeFrame();
+                            }
                     }
                 }catch(ReversoException re){
                     JOptionPane.showMessageDialog(null,"Erreur : " + re.getMessage());

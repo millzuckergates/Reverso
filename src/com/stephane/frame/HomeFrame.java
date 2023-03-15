@@ -163,22 +163,26 @@ public class HomeFrame extends JFrame{
             public void actionPerformed(ActionEvent e){
                 switch(crud){
                     case MODIFIER:
+                    case SUPPRIMER:
                         if(crud == Crud.MODIFIER){
                             validerButton.getText().equals("Modifier");
                         }
-                            int index = comboBox.getSelectedIndex();
-                            switch(choix){
-                                case PROSPECTS:
-                                    choixSociete = Prospects.getListProspects().get(index);
-                                    dispose();
-                                    break;
-                                case CLIENTS:
-                                    choixSociete = Clients.getListClients().get(index);
-                                    dispose();
-                                    break;
-                            }
-                            CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete, crud);
+                        if(crud == Crud.SUPPRIMER){
+                            validerButton.getText().equals("Supprimer");
                         }
+                        int index = comboBox.getSelectedIndex();
+                        switch(choix){
+                            case PROSPECTS:
+                                choixSociete = Prospects.getListProspects().get(index);
+                                dispose();
+                                break;
+                            case CLIENTS:
+                                choixSociete = Clients.getListClients().get(index);
+                                dispose();
+                                break;
+                        }
+                        CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete, crud);
+                }
 //                if(validerButton.getText().equals("Supprimer")){
 //                    CrudFrame crudSupprimer = new CrudFrame(choix, choixSociete);
 //                    dispose();
