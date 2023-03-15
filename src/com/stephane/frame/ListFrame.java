@@ -41,10 +41,10 @@ public class ListFrame extends JFrame{
     public void initTable(){
         // En-tête du tableau
         String[] colonnes = new String[]{"ID", "Raison sociale", "Numéro de rue"
-        , "Rue", "Code postal", "Ville", "Tel", "Email", "Commentaire", "Chiffre d'affaire", "Nombre employés"};
+        , "Rue", "Code postal", "Ville", "Tel", "Email", "Chiffre d'affaire", "Nombre employés"};
         if(choix == Choix.PROSPECTS){
-            colonnes[9] = "Date de prospection";
-            colonnes[10] = "Intêret";
+            colonnes[8] = "Date de prospection";
+            colonnes[9] = "Intêret";
         }
         DefaultTableModel modele = new DefaultTableModel(new Object[][]{}, colonnes);
         modele.addRow(colonnes);
@@ -60,7 +60,6 @@ public class ListFrame extends JFrame{
                         client.getVille(),
                         client.getTel(),
                         client.getEmail(),
-                        client.getCommentaire(),
                         client.getChiffreAffaires(),
                         client.getNbEmployes()
                     });
@@ -77,7 +76,6 @@ public class ListFrame extends JFrame{
                         prospect.getVille(),
                         prospect.getTel(),
                         prospect.getEmail(),
-                        prospect.getCommentaire(),
                         prospect.getDateProspection(),
                         prospect.getInteret()
                     });
