@@ -22,7 +22,7 @@ public class Client extends Societe{
     }
 
     public void setChiffreAffaires(double chiffreAffaires) throws ReversoException{
-        if(chiffreAffaires > 200){
+        if(Double.valueOf(chiffreAffaires) != null && chiffreAffaires > 200){
             this.chiffreAffaires = chiffreAffaires;
         }else{
             throw new ReversoException("Le chiffre d'affaire doit être supérieur à 200");
@@ -34,10 +34,10 @@ public class Client extends Societe{
     }
 
     public void setNbEmployes(int nbEmployes) throws ReversoException{
-        if(nbEmployes > 0){
+        if(Integer.valueOf(nbEmployes) != null && nbEmployes > 0){
             this.nbEmployes = nbEmployes;
         }else{
-            throw new ReversoException("Le nombre d'employés doit être supérieur à 0");
+            throw new ReversoException("Le nombre d'employés doit être saisi et supérieur à 0");
         }
     }
 

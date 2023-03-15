@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CrudFrame extends JFrame{
     private JPanel crudPanel;
@@ -184,7 +185,9 @@ public class CrudFrame extends JFrame{
                             switch(choix){
                                 case PROSPECTS:
                                     Prospect.setIdProspect(Prospect.getIdProspect()+1);
-                                    LocalDate dateProspection = LocalDate.parse(textFieldDateProspection.getText());
+                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                    String replace = textFieldDateProspection.getText().replaceAll("-", "/");
+                                    LocalDate dateProspection = LocalDate.parse(replace, formatter);
                                     String interet = textFieldInteret.getText();
                                     Prospect prospect = new Prospect(raisonSociale,numeroRue,nomRue,codePostal,ville,tel,email,commentaire,dateProspection,interet);
                                     Prospects.getListProspects().add(prospect);
