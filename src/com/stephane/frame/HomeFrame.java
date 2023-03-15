@@ -24,8 +24,8 @@ public class HomeFrame extends JFrame{
     private JLabel titreLabel;
     private JPanel choixPanel;
     private JButton menuPrincipalButton;
-    public static Crud choix;
-    public static Crud crud;
+    private Choix choix;
+    private Crud crud;
     private Societe choixSociete;
 
 
@@ -59,7 +59,7 @@ public class HomeFrame extends JFrame{
         prospectButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                choix = Crud.PROSPECTS;
+                choix = Choix.PROSPECTS;
                 affichageCrud();
                 choixLabel.setText("Gestion des prospects");
                 homePanelListe.setVisible(false);
@@ -78,7 +78,7 @@ public class HomeFrame extends JFrame{
         clientsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                choix = Crud.CLIENTS;
+                choix = Choix.CLIENTS;
                 affichageCrud();
                 choixLabel.setText("Gestion des clients");
                 homePanelListe.setVisible(false);
@@ -99,11 +99,11 @@ public class HomeFrame extends JFrame{
             public void actionPerformed(ActionEvent e){
                 switch(choix){
                     case PROSPECTS:
-                        ListFrame listProspects = new ListFrame(Crud.PROSPECTS);
+                        ListFrame listProspects = new ListFrame(Choix.PROSPECTS);
                         dispose();
                         break;
                     case CLIENTS:
-                        ListFrame listClients = new ListFrame(Crud.CLIENTS);
+                        ListFrame listClients = new ListFrame(Choix.CLIENTS);
                         dispose();
                         break;
                 }
@@ -117,17 +117,17 @@ public class HomeFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 switch(choix){
-                case PROSPECTS:
-                    HomeFrame.crud = Crud.AJOUTER;
-                    CrudFrame crudProspects = new CrudFrame(Crud.PROSPECTS, choixSociete);
-                    dispose();
-                    break;
-                case CLIENTS:
-                    HomeFrame.crud = Crud.AJOUTER;
-                    CrudFrame crudClients = new CrudFrame(Crud.CLIENTS, choixSociete);
-                    dispose();
-                    break;
-                }
+                    case PROSPECTS:
+                        crud = Crud.AJOUTER;
+                        CrudFrame crudProspects = new CrudFrame(Choix.PROSPECTS, choixSociete, crud);
+                        dispose();
+                        break;
+                    case CLIENTS:
+                        crud = Crud.AJOUTER;
+                        CrudFrame crudClients = new CrudFrame(Choix.CLIENTS, choixSociete, crud);
+                        dispose();
+                        break;
+                    }
             }
         });
 
@@ -161,25 +161,28 @@ public class HomeFrame extends JFrame{
         validerButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if(validerButton.getText().equals("Modifier")){
-                    int index = comboBox.getSelectedIndex();
-
-                    switch(choix){
-                        case PROSPECTS:
-                            choixSociete = Prospects.getListProspects().get(index);
-                            dispose();
-                            break;
-                        case CLIENTS:
-                            choixSociete = Clients.getListClients().get(index);
-                            dispose();
-                            break;
-                    }
-                    CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete);
-                }
-                if(validerButton.getText().equals("Supprimer")){
-                    CrudFrame crudSupprimer = new CrudFrame(choix, choixSociete);
-                    dispose();
-                }
+                switch(crud){
+                    case MODIFIER:
+                        if(crud == Crud.MODIFIER){
+                            validerButton.getText().equals("Modifier");
+                        }
+                            int index = comboBox.getSelectedIndex();
+                            switch(choix){
+                                case PROSPECTS:
+                                    choixSociete = Prospects.getListProspects().get(index);
+                                    dispose();
+                                    break;
+                                case CLIENTS:
+                                    choixSociete = Clients.getListClients().get(index);
+                                    dispose();
+                                    break;
+                            }
+                            CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete, crud);
+                        }
+//                if(validerButton.getText().equals("Supprimer")){
+//                    CrudFrame crudSupprimer = new CrudFrame(choix, choixSociete);
+//                    dispose();
+//                }
             }
         });
 

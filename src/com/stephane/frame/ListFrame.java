@@ -12,8 +12,10 @@ public class ListFrame extends JFrame{
     private JTable listTable;
     private DefaultTableModel listModel;
     private JButton retourAuMenuButton;
+    private Choix choix;
 
-    public ListFrame(Crud action){
+    public ListFrame(Choix choix){
+        this.choix = choix;
         initComponent();
         actionListener();
         initTable();
@@ -40,13 +42,13 @@ public class ListFrame extends JFrame{
         // En-tête du tableau
         String[] colonnes = new String[]{"ID", "Raison sociale", "Numéro de rue"
         , "Rue", "Code postal", "Ville", "Tel", "Email", "Commentaire", "Chiffre d'affaire", "Nombre employés"};
-        if(HomeFrame.choix == Crud.PROSPECTS){
+        if(choix == Choix.PROSPECTS){
             colonnes[9] = "Date de prospection";
             colonnes[10] = "Intêret";
         }
         DefaultTableModel modele = new DefaultTableModel(new Object[][]{}, colonnes);
         modele.addRow(colonnes);
-        switch(HomeFrame.choix){
+        switch(choix){
             case CLIENTS:
                 for(Client client : Clients.getListClients()){
                     modele.addRow(new Object[]{

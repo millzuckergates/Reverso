@@ -32,11 +32,13 @@ public class CrudFrame extends JFrame{
     private JLabel labelChiffreAffaires;
     private JLabel labelNombreEmployes;
     private Societe choixSociete;
-    private Crud choix;
+    private Choix choix;
+    private Crud crud;
 
-    public CrudFrame(Crud choix, Societe choixSociete){
+    public CrudFrame(Choix choix, Societe choixSociete, Crud crud){
         this.choix = choix;
         this.choixSociete = choixSociete;
+        this.crud = crud;
         initComponent();
         affichage();
         actionListener();
@@ -55,7 +57,7 @@ public class CrudFrame extends JFrame{
     }
 
     public void affichage(){
-        switch(HomeFrame.choix){
+        switch(choix){
             case PROSPECTS:
                 labelChiffreAffaires.setVisible(false);
                 labelNombreEmployes.setVisible(false);
@@ -70,7 +72,7 @@ public class CrudFrame extends JFrame{
                 break;
         }
 
-        switch(HomeFrame.crud){
+        switch(crud){
             case MODIFIER:
                 labelId.setVisible(true);
                 textFieldId.setVisible(true);
@@ -82,7 +84,7 @@ public class CrudFrame extends JFrame{
                 textFieldTel.setText(choixSociete.getTel());
                 textFieldEmail.setText(choixSociete.getEmail());
                 textFieldCommentaire.setText(choixSociete.getCommentaire());
-                switch(HomeFrame.choix){
+                switch(choix){
                     case CLIENTS:
                             Client choixClient = (Client)choixSociete;
                             textFieldChiffreAffaires.setText(Double.toString(choixClient.getChiffreAffaires()));
@@ -95,7 +97,7 @@ public class CrudFrame extends JFrame{
                             break;
                 }
             case AJOUTER:
-                switch(HomeFrame.choix){
+                switch(choix){
                     case CLIENTS:
                         labelTitre.setText("Ajouter un client");
                         break;
@@ -106,6 +108,9 @@ public class CrudFrame extends JFrame{
         }
     }
 
+    /**
+     * Clic sur le bouton de validation du formulaire
+     */
     public void actionListener(){
         validerButton.addActionListener(new ActionListener(){
             @Override
@@ -121,9 +126,9 @@ public class CrudFrame extends JFrame{
                     String email = textFieldEmail.getText();
                     String commentaire = textFieldCommentaire.getText();
 
-                    switch(HomeFrame.crud){
+                    switch(crud){
                         case AJOUTER:
-                            switch(HomeFrame.choix){
+                            switch(choix){
                                 case PROSPECTS:
                                     Prospect.setIdProspect(Prospect.getIdProspect()+1);
                                     LocalDate dateProspection = LocalDate.parse(textFieldDateProspection.getText());
@@ -156,28 +161,26 @@ public class CrudFrame extends JFrame{
                             choixSociete.setTel(tel);
                             choixSociete.setEmail(email);
                             choixSociete.setCommentaire(commentaire);
-                            switch(HomeFrame.choix){
+                            switch(choix){
                                 case CLIENTS:
                                     Double chiffreAffaires = Double.parseDouble(textFieldChiffreAffaires.getText());
                                     int nombreEmployes = Integer.parseInt(textFieldNombreEmployes.getText());
-                                    if (choixSociete instanceof Client){
                                         Client choixClient = (Client)choixSociete;
                                         choixClient.setChiffreAffaires(chiffreAffaires);
                                         choixClient.setNbEmployes(nombreEmployes);
-                                    }
                                     JOptionPane.showMessageDialog(null,"Le client a bien été modifié");
                                     dispose();
+                                    HomeFrame homeFrameClients = new HomeFrame();
                                     break;
                                 case PROSPECTS:
                                     LocalDate dateProspection = LocalDate.parse(textFieldDateProspection.getText());
                                     String interet = textFieldInteret.getText();
-                                    if (choixSociete instanceof Prospect){
                                         Prospect choixProspect = (Prospect)choixSociete;
                                         choixProspect.setDateProspection(dateProspection);
                                         choixProspect.setInteret(interet);
-                                    }
                                     JOptionPane.showMessageDialog(null,"Le prospect a bien été modifié");
                                     dispose();
+                                    HomeFrame homeFrameProspect = new HomeFrame();
                                     break;
                             }
                         break;
