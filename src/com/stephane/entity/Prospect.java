@@ -20,22 +20,23 @@ public class Prospect extends Societe{
 
     /**
      * @param raisonSociale Le nom de l'entreprise
-     * @param numRue    Le numéro d'habitation
-     * @param rue   Le nom de la rue
+     * @param numRue Le numéro d'habitation
+     * @param rue Le nom de la rue
      * @param codePostal Le code postal
      * @param ville Le nom de la ville
-     * @param tel   Le numéro de téléphone
+     * @param tel Le numéro de téléphone
      * @param email L'adresse email
      * @param commentaire Commentaire sur la société (facultatif)
      * @param dateProspection La date de prospection
      * @param interet Interessement du client (Oui ou Non)
      * @throws ReversoException
      */
-    public Prospect(String raisonSociale,String numRue,String rue,
+    public Prospect(int id,String raisonSociale,String numRue,String rue,
             String codePostal,String ville,String tel,String email,
             String commentaire, LocalDate dateProspection,String interet)
             throws ReversoException{
         super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
+        idProspect++;
         this.setDateProspection(dateProspection);
         this.setInteret(interet);
     }

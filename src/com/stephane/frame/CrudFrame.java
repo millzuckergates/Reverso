@@ -14,6 +14,7 @@ import com.stephane.exceptions.ReversoException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -29,12 +30,12 @@ public class CrudFrame extends JFrame{
     private JTextField textFieldCommentaire;
     private JTextField textFieldDateProspection;
     private JTextField textFieldInteret;
+    private JTextField textFieldId;
     private JButton validerButton;
     private JButton menuButton;
     private JLabel labelDateProspection;
     private JLabel labelInteret;
     private JLabel labelTitre;
-    private JLabel textFieldId;
     private JLabel labelId;
     private JTextField textFieldChiffreAffaires;
     private JTextField textFieldNombreEmployes;
@@ -104,7 +105,7 @@ public class CrudFrame extends JFrame{
             choixSociete.setEmail(email);
             choixSociete.setCommentaire(commentaire);
         }catch(ReversoException re){
-
+            JOptionPane.showMessageDialog(null,"Erreur : " + re.getMessage());
         }
     }
 
@@ -167,11 +168,15 @@ public class CrudFrame extends JFrame{
                 affichageChamps();
                 switch(choix){
                     case CLIENTS:
+                        textFieldId.setText(Integer.toString(Client.getIdClient()));
+                        textFieldId.setEditable(false);
                         Client choixClient = (Client)choixSociete;
                         textFieldChiffreAffaires.setText(Double.toString(choixClient.getChiffreAffaires()));
                         textFieldNombreEmployes.setText(Integer.toString(choixClient.getNbEmployes()));
                         break;
                     case PROSPECTS:
+                        textFieldId.setText(Integer.toString(Prospect.getIdProspect()));
+                        textFieldId.setEditable(false);
                         Prospect choixProspect = (Prospect)choixSociete;
                         textFieldDateProspection.setText(choixProspect.getDateProspection().toString());
                         textFieldInteret.setText(choixProspect.getInteret());
@@ -190,7 +195,7 @@ public class CrudFrame extends JFrame{
     public void actionListener(){
         validerButton.addActionListener(new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent ev){
                 try{
                     // Récupération des données
                     String raisonSociale = textFieldRaison.getText();
@@ -207,14 +212,14 @@ public class CrudFrame extends JFrame{
                             switch(choix){
                                 // Traitement de l'ajout d'un prospect
                                 case PROSPECTS:
-                                    Prospect.setIdProspect(Prospect.getIdProspect()+1);
+                                    int id = Prospect.getIdProspect();
                                     // Formattage de la date en format jour/mois/année
                                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                                     // Remplace les / éventuels en -
                                     String replace = textFieldDateProspection.getText().replaceAll("-", "/");
                                     LocalDate dateProspection = LocalDate.parse(replace, formatter);
                                     String interet = textFieldInteret.getText();
-                                    Prospect prospect = new Prospect(raisonSociale,numeroRue,nomRue,codePostal,ville,tel,email,commentaire,dateProspection,interet);
+                                    Prospect prospect = new Prospect(id,raisonSociale,numeroRue,nomRue,codePostal,ville,tel,email,commentaire,dateProspection,interet);
                                     // Ajoute le prospect dans la lise
                                     Prospects.getListProspects().add(prospect);
                                     JOptionPane.showMessageDialog(null,"Le prospect a bien été ajouté");
@@ -276,6 +281,12 @@ public class CrudFrame extends JFrame{
                     }
                 }catch(ReversoException re){
                     JOptionPane.showMessageDialog(null,"Erreur : " + re.getMessage());
+                }catch(NumberFormatException nfe){
+                    JOptionPane.showMessageDialog(null,"Erreur dans le format du numéro");
+                }catch(DateTimeException de){
+                    JOptionPane.showMessageDialog(null,"Le format de la date n'est pas correct");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Une erreur est survenue. Contactez l'administrateur");
                 }
             }
         });
