@@ -54,8 +54,12 @@ public class Prospect extends Societe{
         return interet;
     }
 
-    public void setInteret(String interet){
-        this.interet = interet;
+    public void setInteret(String interet) throws ReversoException{
+        if(interet.equalsIgnoreCase("Oui") || interet.equalsIgnoreCase("Non")){
+            this.interet = interet;
+        }else{
+            throw new ReversoException("Le paramètre 'interet' doit être 'Oui' ou 'Non'");
+        }
     }
 
     public static int getIdProspect(){
@@ -65,4 +69,11 @@ public class Prospect extends Societe{
     public static void setIdProspect(int idProspect){
         Prospect.idProspect = idProspect;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + "Prospect{" + "dateProspection=" +
+                dateProspection + ", interet='" + interet + '\'' + '}';
+    }
+
 }

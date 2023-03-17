@@ -63,7 +63,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setRaisonSociale(String raisonSociale) throws ReversoException{
-        if(!raisonSociale.isEmpty()){
+        if(!raisonSociale.isEmpty() && raisonSociale != null){
             this.raisonSociale = raisonSociale;
         }else{
             throw new ReversoException("La raison sociale doit être saisie");
@@ -80,7 +80,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setNumRue(String numRue) throws ReversoException{
-        if(!numRue.isEmpty()){
+        if(!numRue.isEmpty() && numRue != null){
             this.numRue = numRue;
         }else{
             throw new ReversoException("Le numéro de rue doit être saisi");
@@ -97,7 +97,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setRue(String rue) throws ReversoException{
-        if(!rue.isEmpty()){
+        if(!rue.isEmpty() && rue != null){
             this.rue = rue;
         }else{
             throw new ReversoException("Le nom de la rue doit être saisie");
@@ -110,14 +110,16 @@ public abstract class Societe{
 
     /**
      * Modifie le code postal
-     * @param codePostal Le code postal. Ne doit pas être vide. Doit contenir 5 caractères.
+     * @param codePostal Le code postal. Ne doit pas être vide. Doit contenir 5
+     * caractères.
      * @throws ReversoException
      */
     public void setCodePostal(String codePostal) throws ReversoException{
-        if(!codePostal.isEmpty() && codePostal.length() == 5){
+        if(!codePostal.isEmpty() && codePostal.length() == 5 && codePostal != null){
             this.codePostal = codePostal;
         }else{
-            throw new ReversoException("Le numéro de rue doit être saisi et doit contenir 5 caractères.");
+            throw new ReversoException("Le numéro de rue doit être saisi et doit" +
+            " contenir 5 caractères.");
         }
     }
 
@@ -131,7 +133,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setVille(String ville) throws ReversoException{
-        if(!ville.isEmpty()){
+        if(!ville.isEmpty() && ville != null){
             this.ville = ville;
         }else{
             throw new ReversoException("Le numéro de rue doit être saisi");
@@ -152,7 +154,8 @@ public abstract class Societe{
         if (tel.matches("\\d{10,}")){
             this.tel = tel;
         }else{
-            throw new ReversoException("Le numéro de téléphone doit être renseigné et contenir 10 caractères.");
+            throw new ReversoException("Le numéro de téléphone doit être " +
+            "renseigné et contenir au moins 10 caractères.");
         }
     }
 
@@ -179,5 +182,14 @@ public abstract class Societe{
 
     public void setCommentaire(String commentaire){
         this.commentaire = commentaire;
+    }
+
+    @Override
+    public String toString(){
+        return "Societe{" + "idSociete=" + idSociete + ", raisonSociale='" +
+                raisonSociale + '\'' + ", numRue='" + numRue + '\'' + ", rue='"
+                + rue + '\'' + ", codePostal='" + codePostal + '\'' + ", ville='"
+                + ville + '\'' + ", tel='" + tel + '\'' + ", email='" + email + '\''
+                + ", commentaire='" + commentaire + '\'' + '}';
     }
 }

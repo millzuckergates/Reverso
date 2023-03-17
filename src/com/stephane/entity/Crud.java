@@ -1,7 +1,6 @@
 /**
  * Cette classe définit une énumération "Crud" qui représente les différentes
- opérations CRUD (Create, Read, Update, Delete) ainsi que deux choix
- OUI et NON.
+ opérations CRUD (Create, Read, Update, Delete)
  *
  * @author Mill Zuckergates
  * @version 1.0
@@ -12,7 +11,5 @@ public enum Crud{
     AJOUTER,
     MODIFIER,
     SUPPRIMER,
-    LISTE,
-    OUI,
-    NON
+    LISTE
 }

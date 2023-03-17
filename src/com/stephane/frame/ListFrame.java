@@ -20,6 +20,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 
 public class ListFrame extends JFrame{
     private JPanel listPanel;
@@ -105,7 +106,7 @@ public class ListFrame extends JFrame{
                         prospect.getVille(),
                         prospect.getTel(),
                         prospect.getEmail(),
-                        prospect.getDateProspection(),
+                        prospect.getDateProspection().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                         prospect.getInteret()
                     });
                 }
