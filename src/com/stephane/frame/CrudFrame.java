@@ -15,7 +15,10 @@ import java.awt.event.ActionListener;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
 import javax.swing.*;
+
+import static com.stephane.logs.LoggerReverso.LOGGER;
 
 public class CrudFrame extends JFrame {
     private JPanel crudPanel;
@@ -304,6 +307,7 @@ public class CrudFrame extends JFrame {
                     JOptionPane.showMessageDialog(
                             null, "Une erreur est survenue. Contactez l'administrateur");
                         e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Problème lors de la validation du formulaire");
                         System.exit(1);
                 }
             }

@@ -63,7 +63,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setRaisonSociale(String raisonSociale) throws ReversoException{
-        if(!raisonSociale.isEmpty() && raisonSociale != null){
+        if(raisonSociale != null && !raisonSociale.isEmpty()){
             this.raisonSociale = raisonSociale;
         }else{
             throw new ReversoException("La raison sociale doit être saisie");
@@ -80,7 +80,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setNumRue(String numRue) throws ReversoException{
-        if(!numRue.isEmpty() && numRue != null){
+        if(numRue != null && !numRue.isEmpty()){
             this.numRue = numRue;
         }else{
             throw new ReversoException("Le numéro de rue doit être saisi");
@@ -97,7 +97,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setRue(String rue) throws ReversoException{
-        if(!rue.isEmpty() && rue != null){
+        if(rue != null && !rue.isEmpty()){
             this.rue = rue;
         }else{
             throw new ReversoException("Le nom de la rue doit être saisie");
@@ -115,7 +115,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setCodePostal(String codePostal) throws ReversoException{
-        if(!codePostal.isEmpty() && codePostal.length() == 5 && codePostal != null){
+        if(codePostal != null && !codePostal.isEmpty() && codePostal.length() == 5){
             this.codePostal = codePostal;
         }else{
             throw new ReversoException("Le numéro de rue doit être saisi et doit" +
@@ -133,7 +133,7 @@ public abstract class Societe{
      * @throws ReversoException
      */
     public void setVille(String ville) throws ReversoException{
-        if(!ville.isEmpty() && ville != null){
+        if(ville != null && !ville.isEmpty()){
             this.ville = ville;
         }else{
             throw new ReversoException("Le numéro de rue doit être saisi");
