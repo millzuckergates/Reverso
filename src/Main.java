@@ -1,4 +1,6 @@
+import com.mysql.jdbc.Connection;
 import com.stephane.dao.ConnexionManager;
+import com.stephane.dao.DAOClient;
 import com.stephane.entity.Client;
 import com.stephane.entity.Clients;
 import com.stephane.entity.Prospect;
@@ -9,6 +11,7 @@ import com.stephane.logs.FormatterLog;
 import com.stephane.logs.LoggerReverso;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -16,9 +19,10 @@ import java.util.logging.Level;
 import static com.stephane.logs.LoggerReverso.LOGGER;
 
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException {
         try{
             new ConnexionManager();
+            DAOClient.findAll();
             FileHandler fh = new FileHandler("LogReverso.log", true);
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(fh);

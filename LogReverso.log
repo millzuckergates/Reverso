@@ -2,3 +2,5 @@
 19/03/2023 17:12:16 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 21/03/2023 13:32:11 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 21/03/2023 13:35:55 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 14:53:19 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 14:53:26 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
