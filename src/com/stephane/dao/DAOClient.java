@@ -46,9 +46,6 @@ public class DAOClient{
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
-            System.out.println(query);
-
-            // Traiter le ResultSet ici (par exemple, afficher les résultats)
             if(rs.next()){
                 int resultId = rs.getInt("id");
                 String raisonSociale = rs.getString("raison_sociale");
@@ -64,6 +61,35 @@ public class DAOClient{
 
                 System.out.println(raisonSociale);
             }
+
+        } catch (SQLException e) {
+            //JDBCTutorialUtilities.printSQLException(e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
+    }
+
+    public static void create(String raisonSociale, String numRue, String rue
+    , String codePostal, String ville, String tel, String email, String commentaire,
+    Double chiffreAffaires, int nb_employes) throws SQLException {
+        Connection con = ConnexionManager.connection;
+        PreparedStatement stmt = null;
+        String query = "INSERT INTO client (raison_sociale, num_rue, rue, code_postal, ville, tel, email, commentaire, " +
+                "chiffre_affaires, nb_employes) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            stmt = con.prepareStatement(query);
+                stmt.setString(1, raisonSociale);
+                stmt.setString(2, numRue);
+                stmt.setString(3, rue);
+                stmt.setString(4, codePostal);
+                stmt.setString(5, ville);
+                stmt.setString(6, tel);
+                stmt.setString(7, email);
+                stmt.setString(8, commentaire);
+                stmt.setDouble(9, chiffreAffaires);
+                stmt.setInt(10, nb_employes);
+                stmt.executeUpdate();
 
         } catch (SQLException e) {
             //JDBCTutorialUtilities.printSQLException(e);
