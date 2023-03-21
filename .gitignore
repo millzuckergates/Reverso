@@ -4,3 +4,4 @@ out/
 *.iml
 *.ipr
 *.iws
+/mysql-connector-java-5.1.49.jar/
