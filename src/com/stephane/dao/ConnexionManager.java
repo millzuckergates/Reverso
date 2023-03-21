@@ -2,7 +2,6 @@ package com.stephane.dao;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +10,7 @@ import java.util.Properties;
 
 import static com.stephane.logs.LoggerReverso.LOGGER;
 
-public class Connexion{
+public class ConnexionManager {
         public static Connection connection = null;
         static{
          Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -30,8 +29,9 @@ public class Connexion{
          });
         }
 
-    private Connexion(){
+    public ConnexionManager(){
         try{
+            // Instanciation de la classe Properties (lire les infos d' un fichier)
             final Properties dataProperties = new Properties();
 
             File fichier = new File("database.properties");
@@ -43,6 +43,8 @@ public class Connexion{
                     dataProperties.getProperty("login"),
                     dataProperties.getProperty("password")
             );
+
+            System.out.println(connection);
 
         }catch(IOException ie){
 

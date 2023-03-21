@@ -1,3 +1,4 @@
+import com.stephane.dao.ConnexionManager;
 import com.stephane.entity.Client;
 import com.stephane.entity.Clients;
 import com.stephane.entity.Prospect;
@@ -17,6 +18,7 @@ import static com.stephane.logs.LoggerReverso.LOGGER;
 public class Main{
     public static void main(String[] args){
         try{
+            new ConnexionManager();
             FileHandler fh = new FileHandler("LogReverso.log", true);
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(fh);
