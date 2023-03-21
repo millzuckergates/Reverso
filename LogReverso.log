@@ -4,3 +4,18 @@
 21/03/2023 13:35:55 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
 21/03/2023 14:53:19 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 21/03/2023 14:53:26 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:30:57 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 15:31:00 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:34:15 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 15:34:20 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:36:26 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 15:36:43 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:45:09 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 15:45:14 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:47:20 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 15:47:24 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 15:48:43 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 16:00:07 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 16:01:08 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+21/03/2023 16:01:12 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+21/03/2023 16:03:44 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main

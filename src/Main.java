@@ -22,7 +22,7 @@ public class Main{
     public static void main(String[] args) throws SQLException {
         try{
             new ConnexionManager();
-            DAOClient.findAll();
+            DAOClient.find(1);
             FileHandler fh = new FileHandler("LogReverso.log", true);
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(fh);

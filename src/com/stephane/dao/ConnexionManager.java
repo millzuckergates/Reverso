@@ -44,8 +44,6 @@ public class ConnexionManager {
                     dataProperties.getProperty("password")
             );
 
-            System.out.println(connection);
-
         }catch(IOException ie){
 
         }catch(SQLException se){
