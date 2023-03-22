@@ -131,4 +131,21 @@ public class DAOClient{
         }
     }
 
+    public static void delete(int id) throws SQLException {
+        Connection con = ConnexionManager.connection;
+        PreparedStatement stmt = null;
+        String query = "DELETE FROM clients WHERE id = ?";
+
+        try {
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            // JDBCTutorialUtilities.printSQLException(e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
+    }
+
 }

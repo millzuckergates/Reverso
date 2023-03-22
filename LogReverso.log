@@ -47,3 +47,5 @@
 22/03/2023 10:21:03 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
 22/03/2023 10:21:08 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 22/03/2023 10:22:51 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+22/03/2023 10:27:49 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+22/03/2023 10:27:56 Level : INFO / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main

@@ -14,8 +14,7 @@ public class Main{
     public static void main(String[] args) throws SQLException {
         try{
             new ConnexionManager();
-            DAOClient.save(2,"Coco", "234", "grande", "59450", "Douai",
-                    "1212121212", "a@a.fr", "test", 200.000, 123456);
+            DAOClient.delete(2);
             FileHandler fh = new FileHandler("LogReverso.log", true);
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(fh);
