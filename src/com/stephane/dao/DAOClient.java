@@ -1,7 +1,5 @@
 package com.stephane.dao;
 
-import com.mysql.jdbc.Statement;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +11,7 @@ public class DAOClient{
         // On récupère la connexion à la db
         Connection con = ConnexionManager.connection;
         PreparedStatement stmt = null;
-        String query = "SELECT * FROM client";
+        String query = "SELECT * FROM clients";
         try {
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
@@ -29,7 +27,9 @@ public class DAOClient{
                 String commentaire = rs.getString("commentaire");
                 Double chiffreAffaires = rs.getDouble("chiffre_affaires");
                 Integer nb_employes = rs.getInt("nb_employes");
+                System.out.println(raisonSociale);
             }
+
         } catch (SQLException e ) {
             //JDBCTutorialUtilities.printSQLException(e);
         } finally {
@@ -40,7 +40,7 @@ public class DAOClient{
     public static void find(int id) throws SQLException {
         Connection con = ConnexionManager.connection;
         PreparedStatement stmt = null;
-        String query = "SELECT * FROM client WHERE id = ?";
+        String query = "SELECT * FROM clients WHERE id = ?";
         try {
             stmt = con.prepareStatement(query);
             stmt.setInt(1, id);
@@ -74,7 +74,7 @@ public class DAOClient{
     Double chiffreAffaires, int nb_employes) throws SQLException {
         Connection con = ConnexionManager.connection;
         PreparedStatement stmt = null;
-        String query = "INSERT INTO client (raison_sociale, num_rue, rue, code_postal, ville, tel, email, commentaire, " +
+        String query = "INSERT INTO clients (raison_sociale, num_rue, rue, code_postal, ville, tel, email, commentaire, " +
                 "chiffre_affaires, nb_employes) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -93,6 +93,39 @@ public class DAOClient{
 
         } catch (SQLException e) {
             //JDBCTutorialUtilities.printSQLException(e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
+    }
+
+    public static void save(int id, String raisonSociale, String numRue,
+            String rue, String codePostal, String ville, String tel,
+            String email, String commentaire, Double chiffreAffaires,
+            int nb_employes) throws SQLException {
+        Connection con = ConnexionManager.connection;
+        PreparedStatement stmt = null;
+        String query = "UPDATE clients SET raison_sociale = ?, num_rue = ?, " +
+                "rue = ?, code_postal = ?, ville = ?, tel = ?, email = ?, " +
+                "commentaire = ?, chiffre_affaires = ?, nb_employes = ? " +
+                "WHERE id = ?";
+
+        try {
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, raisonSociale);
+            stmt.setString(2, numRue);
+            stmt.setString(3, rue);
+            stmt.setString(4, codePostal);
+            stmt.setString(5, ville);
+            stmt.setString(6, tel);
+            stmt.setString(7, email);
+            stmt.setString(8, commentaire);
+            stmt.setDouble(9, chiffreAffaires);
+            stmt.setInt(10, nb_employes);
+            stmt.setInt(11, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            // JDBCTutorialUtilities.printSQLException(e);
         } finally {
             if (stmt != null) { stmt.close(); }
         }

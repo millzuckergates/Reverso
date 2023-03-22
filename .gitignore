@@ -6,3 +6,4 @@ out/
 *.iws
 /mysql-connector-java-5.1.49.jar/
 /database.properties
+/mysql-connector-j-8.0.32/

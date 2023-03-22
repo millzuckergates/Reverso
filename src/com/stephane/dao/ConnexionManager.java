@@ -31,8 +31,9 @@ public class ConnexionManager {
 
     public ConnexionManager(){
         try{
-            // Instanciation de la classe Properties (lire les infos d' un fichier)
+            // Instanciation de la classe Properties (lire les infos d'un fichier)
             final Properties dataProperties = new Properties();
+
 
             File fichier = new File("database.properties");
             FileInputStream input = new FileInputStream(fichier);
@@ -43,11 +44,12 @@ public class ConnexionManager {
                     dataProperties.getProperty("login"),
                     dataProperties.getProperty("password")
             );
+            System.out.println(connection);
 
         }catch(IOException ie){
-
-        }catch(SQLException se){
-
+            System.out.println(ie.getMessage());
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
     }
 
