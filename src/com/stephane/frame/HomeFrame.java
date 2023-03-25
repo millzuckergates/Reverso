@@ -8,12 +8,15 @@
 
 package com.stephane.frame;
 
+import com.stephane.dao.DAOException;
 import com.stephane.entity.*;
+import com.stephane.exceptions.ReversoException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class HomeFrame extends JFrame{
     private JPanel homePanel;

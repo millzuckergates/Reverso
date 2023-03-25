@@ -45,6 +45,10 @@ public abstract class Societe{
         this.setCommentaire(commentaire);
     }
 
+    public Societe(){
+
+    }
+
     public int getIdSociete(){
         return idSociete;
     }

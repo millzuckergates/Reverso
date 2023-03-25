@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import static com.stephane.logs.LoggerReverso.LOGGER;
 
@@ -29,9 +30,9 @@ public class ConnexionManager {
          });
         }
 
-    public ConnexionManager(){
+    public ConnexionManager() throws DAOException{
         try{
-            // Instanciation de la classe Properties (lire les infos d'un fichier)
+            // Instanciation de la classe Properties (lire les infos du fichier)
             final Properties dataProperties = new Properties();
 
 
@@ -44,12 +45,21 @@ public class ConnexionManager {
                     dataProperties.getProperty("login"),
                     dataProperties.getProperty("password")
             );
-            System.out.println(connection);
 
+        //Exception pour la lecture/ecriture d'un fichier
         }catch(IOException ie){
-            System.out.println(ie.getMessage());
-        } catch (SQLException se) {
-            se.printStackTrace();
+            LOGGER.log(Level.SEVERE,"Probleme de lecture du fichier database.properties"
+                    + ie.getMessage());
+            throw new DAOException("Erreur de lecture du fichier database.properties",5);
+        }catch(SQLException se){
+            LOGGER.log(Level.SEVERE,"Probleme de connexion à la base de données" +
+                    se.getMessage() + "=>" + se.getCause());
+            throw new DAOException("Erreur de connexion à la base de données" + se.getSQLState(),5);
+        }catch(Exception e){
+            LOGGER.log(Level.SEVERE,"Une erreur est survenue. L'application va s'arrêter"
+                    + e.getMessage() + "=>" + e.getCause());
+            System.exit(1);
+            throw new DAOException("Une erreur est survenue. L'application va s'arrêter",5);
         }
     }
 

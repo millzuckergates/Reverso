@@ -12,11 +12,13 @@ import com.stephane.exceptions.ReversoException;
 import java.util.ArrayList;
 
 public class Client extends Societe{
-
-    private static int idClient = 0;
+    private Integer idClient;
     private double chiffreAffaires;
     private int nbEmployes;
 
+    public Client(){
+        super();
+    };
     /**
      * @param raisonSociale Le nom de l'entreprise
      * @param numRue    Le numéro d'habitation
@@ -75,12 +77,12 @@ public class Client extends Societe{
         }
     }
 
-    public static int getIdClient(){
+    public Integer getIdClient(){
         return idClient;
     }
 
-    public static void setIdClient(int idClient){
-        Client.idClient = idClient;
+    public void setIdClient(int idClient){
+        this.idClient = idClient;
     }
 
     @Override

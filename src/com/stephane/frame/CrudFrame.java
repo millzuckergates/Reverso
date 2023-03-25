@@ -8,10 +8,12 @@
 
 package com.stephane.frame;
 
+import com.stephane.dao.DAOException;
 import com.stephane.entity.*;
 import com.stephane.exceptions.ReversoException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -160,7 +162,7 @@ public class CrudFrame extends JFrame {
                 affichageChamps();
                 switch (choix) {
                     case CLIENTS:
-                        textFieldId.setText(Integer.toString(Client.getIdClient()));
+                        //textFieldId.setText(Integer.toString(Client.getIdClient()));
                         textFieldId.setEditable(false);
                         Client choixClient = (Client) choixSociete;
                         textFieldChiffreAffaires.setText(
@@ -187,7 +189,7 @@ public class CrudFrame extends JFrame {
     /**
      * Clic sur le bouton de validation du formulaire
      */
-    public void actionListener() {
+    public void actionListener(){
         validerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
@@ -231,7 +233,6 @@ public class CrudFrame extends JFrame {
                                     break;
                                 // Traitement de l'ajout d'un client
                                 case CLIENTS:
-                                    Client.setIdClient(Client.getIdClient() + 1);
                                     Double chiffreAffaires =
                                             Double.parseDouble(textFieldChiffreAffaires.getText());
                                     int nombreEmployes =
@@ -295,20 +296,17 @@ public class CrudFrame extends JFrame {
                                 HomeFrame homeFrame = new HomeFrame();
                             }
                     }
-                } catch (ReversoException re) {
-                    JOptionPane.showMessageDialog(null, "Erreur : " + re.getMessage());
-                } catch (NumberFormatException nfe) {
+                }catch(NumberFormatException nfe) {
                     JOptionPane.showMessageDialog(
                             null, "Erreur dans le format du numéro");
-                } catch (DateTimeException de) {
-                    JOptionPane.showMessageDialog(
-                            null, "Le format de la date n'est pas correct");
-                } catch (Exception e) {
+                }catch(DateTimeException de){
+                    JOptionPane.showMessageDialog(null,"Le format de la date n'est pas correct");
+                }catch(ReversoException re) {
+                    JOptionPane.showMessageDialog(null, "Erreur : " + re.getMessage());
+                }catch(Exception e) {
                     JOptionPane.showMessageDialog(
                             null, "Une erreur est survenue. Contactez l'administrateur");
                         e.printStackTrace();
-                    LOGGER.log(Level.SEVERE, "Problème lors de la validation du formulaire");
-                        System.exit(1);
                 }
             }
         });
