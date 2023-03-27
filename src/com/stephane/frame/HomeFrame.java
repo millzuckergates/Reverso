@@ -8,7 +8,9 @@
 
 package com.stephane.frame;
 
+import com.stephane.dao.DAOClient;
 import com.stephane.dao.DAOException;
+import com.stephane.dao.DAOProspect;
 import com.stephane.entity.*;
 import com.stephane.exceptions.ReversoException;
 
@@ -17,6 +19,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+
+import static com.stephane.logs.LoggerReverso.LOGGER;
 
 public class HomeFrame extends JFrame{
     private JPanel homePanel;
@@ -83,8 +88,21 @@ public class HomeFrame extends JFrame{
                 // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
-                for(Prospect prospect : Prospects.getListProspects()){
-                    comboBox.addItem(prospect.getRaisonSociale());
+                try{
+                    for(Prospect prospect : DAOProspect.findAll()){
+                        comboBox.addItem(prospect);
+                    }
+                }catch(ReversoException re){
+                    JOptionPane.showMessageDialog(null, re.getMessage());
+                }catch(DAOException de){
+                    if(de.getGravity() != 5){
+                        JOptionPane.showMessageDialog(null,de.getMessage());
+                    }else{
+                        LOGGER.log(Level.SEVERE,"Problème de lecture bdd " + de.getMessage() +
+                                "L'appli va fermer.");
+                        JOptionPane.showMessageDialog(null,de.getMessage());
+                        System.exit(1);
+                    }
                 }
             }
         });
@@ -102,8 +120,21 @@ public class HomeFrame extends JFrame{
                 // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
-                for(Client client : Clients.getListClients()){
-                    comboBox.addItem(client.getRaisonSociale());
+                try{
+                    for(Client client : DAOClient.findAll()){
+                        comboBox.addItem(client);
+                    }
+                }catch(ReversoException re){
+                    JOptionPane.showMessageDialog(null, re.getMessage());
+                }catch(DAOException de){
+                    if(de.getGravity() != 5){
+                        JOptionPane.showMessageDialog(null,de.getMessage());
+                    }else{
+                        LOGGER.log(Level.SEVERE,"Problème de lecture bdd " + de.getMessage() +
+                                "L'appli va fermer.");
+                        JOptionPane.showMessageDialog(null,de.getMessage());
+                        System.exit(1);
+                    }
                 }
             }
         });
@@ -176,35 +207,27 @@ public class HomeFrame extends JFrame{
          * Clic sur le bouton Valider
          */
         validerButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                switch(crud){
-                    case MODIFIER:
-                    case SUPPRIMER:
-                        if(crud == Crud.MODIFIER){
-                            validerButton.getText().equals("Modifier");
+                @Override public void actionPerformed (ActionEvent e){
+                        switch(crud){
+                            case MODIFIER:
+                            case SUPPRIMER:
+                                if(crud == Crud.MODIFIER){
+                                    validerButton.getText().equals("Modifier");
+                                }
+                                if(crud == Crud.SUPPRIMER){
+                                    validerButton.getText().equals("Supprimer");
+                                }
+                                int index = comboBox.getSelectedIndex();
+                                switch(choix){
+                                    case PROSPECTS:
+                                    case CLIENTS:
+                                        choixSociete = (Societe)comboBox.getSelectedItem();
+                                        dispose();
+                                        break;
+                                }
+                                CrudFrame crudModifierSupprimer = new CrudFrame(choix,choixSociete,crud);
                         }
-                        if(crud == Crud.SUPPRIMER){
-                            validerButton.getText().equals("Supprimer");
-                        }
-                        int index = comboBox.getSelectedIndex();
-                        switch(choix){
-                            case PROSPECTS:
-                                choixSociete = Prospects.getListProspects().get(index);
-                                dispose();
-                                break;
-                            case CLIENTS:
-                                choixSociete = Clients.getListClients().get(index);
-                                dispose();
-                                break;
-                        }
-                        CrudFrame crudModifierSupprimer = new CrudFrame(choix, choixSociete, crud);
                 }
-//                if(validerButton.getText().equals("Supprimer")){
-//                    CrudFrame crudSupprimer = new CrudFrame(choix, choixSociete);
-//                    dispose();
-//                }
-            }
         });
 
         /**

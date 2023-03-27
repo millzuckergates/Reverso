@@ -72,3 +72,62 @@
 22/03/2023 14:51:02 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
 25/03/2023 14:55:59 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 25/03/2023 14:56:19 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+25/03/2023 14:59:56 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+25/03/2023 15:11:14 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+25/03/2023 15:25:35 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+25/03/2023 15:25:43 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+25/03/2023 15:33:08 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 11:54:53 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 12:00:23 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 12:02:05 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+26/03/2023 12:02:14 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 14:04:48 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 14:33:43 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 14:35:35 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 15:36:53 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+26/03/2023 15:37:00 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 15:43:48 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 15:44:22 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 16:28:16 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+26/03/2023 16:28:24 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+26/03/2023 16:58:43 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 09:13:35 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 09:22:09 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 09:29:50 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 09:40:23 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 09:40:49 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 09:41:05 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 09:41:25 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 09:49:11 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 10:05:10 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 10:05:18 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 10:05:34 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 10:05:47 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 10:10:23 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 11:37:54 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 11:41:46 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 11:52:14 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 11:52:23 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 11:52:39 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 11:55:13 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 11:55:19 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 11:57:02 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 11:57:08 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 11:57:14 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 12:37:11 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 12:38:16 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 12:38:22 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 12:39:22 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 12:56:05 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 13:04:49 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 13:04:56 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 13:05:07 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 13:05:42 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 13:06:19 Level : SEVERE / Message : Probleme avec la base de donnéesColumn 'nb_employes' not found. / Classe : com.stephane.dao.DAOProspect / Méthode : findAll
+27/03/2023 13:08:42 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 13:28:07 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 13:28:14 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 13:30:34 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 13:30:59 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+27/03/2023 13:31:54 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+27/03/2023 19:17:28 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main

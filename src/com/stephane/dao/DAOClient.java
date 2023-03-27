@@ -20,16 +20,14 @@ public class DAOClient{
         Connection con = ConnexionManager.connection;
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients";
-        System.out.println("ici");
 
         try{
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-                System.out.println("Connexion " + con);
                 Client client = new Client();
-                client.setIdClient(rs.getInt("id"));
+                client.setIdSociete(rs.getInt("id"));
                 client.setRaisonSociale(rs.getString("raison_sociale"));
                 client.setNumRue(rs.getString("num_rue"));
                 client.setRue(rs.getString("rue"));
@@ -73,8 +71,6 @@ public class DAOClient{
                 String commentaire = rs.getString("commentaire");
                 Double chiffreAffaires = rs.getDouble("chiffre_affaires");
                 Integer nb_employes = rs.getInt("nb_employes");
-
-                System.out.println(raisonSociale);
             }
         }catch(SQLException se){
             LOGGER.log(Level.SEVERE, "Erreur : Problème avec la méthode find");

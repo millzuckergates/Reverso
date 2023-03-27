@@ -8,7 +8,9 @@
 
 package com.stephane.frame;
 
+import com.stephane.dao.DAOClient;
 import com.stephane.dao.DAOException;
+import com.stephane.dao.DAOProspect;
 import com.stephane.entity.*;
 import com.stephane.exceptions.ReversoException;
 import java.awt.event.ActionEvent;
@@ -109,6 +111,7 @@ public class CrudFrame extends JFrame {
     private void affichageChamps() {
         labelId.setVisible(true);
         textFieldId.setVisible(true);
+        textFieldId.setText(Integer.toString(choixSociete.getIdSociete()));;
         textFieldRaison.setText(choixSociete.getRaisonSociale());
         textFieldNumero.setText(choixSociete.getNumRue());
         textFieldNomRue.setText(choixSociete.getRue());
@@ -162,7 +165,6 @@ public class CrudFrame extends JFrame {
                 affichageChamps();
                 switch (choix) {
                     case CLIENTS:
-                        //textFieldId.setText(Integer.toString(Client.getIdClient()));
                         textFieldId.setEditable(false);
                         Client choixClient = (Client) choixSociete;
                         textFieldChiffreAffaires.setText(
@@ -171,7 +173,6 @@ public class CrudFrame extends JFrame {
                                 Integer.toString(choixClient.getNbEmployes()));
                         break;
                     case PROSPECTS:
-                        textFieldId.setText(Integer.toString(Prospect.getIdProspect()));
                         textFieldId.setEditable(false);
                         Prospect choixProspect = (Prospect) choixSociete;
                         textFieldDateProspection.setText(
@@ -209,7 +210,6 @@ public class CrudFrame extends JFrame {
                             switch (choix) {
                                 // Traitement de l'ajout d'un prospect
                                 case PROSPECTS:
-                                    int id = Prospect.getIdProspect();
                                     // Formattage de la date en format jour/mois/année
                                     DateTimeFormatter formatter =
                                             DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -218,14 +218,12 @@ public class CrudFrame extends JFrame {
                                             textFieldDateProspection.getText().replaceAll("-", "/");
                                     LocalDate dateProspection =
                                             LocalDate.parse(replace, formatter);
-                                    JOptionPane.showMessageDialog(
-                                            null, dateProspection);
                                     String interet = textFieldInteret.getText();
-                                    Prospect prospect = new Prospect(id, raisonSociale, numeroRue,
-                                            nomRue, codePostal, ville, tel, email, commentaire,
+                                    DAOProspect.save(null, raisonSociale, numeroRue, nomRue,
+                                            codePostal, ville, tel, email, commentaire,
                                             dateProspection, interet);
+
                                     // Ajoute le prospect dans la lise
-                                    Prospects.getListProspects().add(prospect);
                                     JOptionPane.showMessageDialog(
                                             null, "Le prospect a bien été ajouté");
                                     dispose();
@@ -237,10 +235,9 @@ public class CrudFrame extends JFrame {
                                             Double.parseDouble(textFieldChiffreAffaires.getText());
                                     int nombreEmployes =
                                             Integer.parseInt(textFieldNombreEmployes.getText());
-                                    Client client = new Client(raisonSociale, numeroRue, nomRue,
+                                    DAOClient.save(null, raisonSociale, numeroRue, nomRue,
                                             codePostal, ville, tel, email, commentaire,
                                             chiffreAffaires, nombreEmployes);
-                                    Clients.getListClients().add(client);
                                     JOptionPane.showMessageDialog(
                                             null, "Le client a bien été ajouté");
                                     dispose();
@@ -260,6 +257,11 @@ public class CrudFrame extends JFrame {
                                     Client choixClient = (Client) choixSociete;
                                     choixClient.setChiffreAffaires(chiffreAffaires);
                                     choixClient.setNbEmployes(nombreEmployes);
+                                    int clientId = choixClient.getIdSociete();
+                                    DAOClient.save(clientId, raisonSociale, numeroRue, nomRue,
+                                            codePostal, ville, tel, email, commentaire,
+                                            chiffreAffaires, nombreEmployes);
+
                                     JOptionPane.showMessageDialog(
                                             null, "Le client a bien été modifié");
                                     dispose();
@@ -272,6 +274,11 @@ public class CrudFrame extends JFrame {
                                     Prospect choixProspect = (Prospect) choixSociete;
                                     choixProspect.setDateProspection(dateProspection);
                                     choixProspect.setInteret(interet);
+                                    int prospectId = choixProspect.getIdSociete();
+                                    DAOProspect.save(prospectId, raisonSociale, numeroRue, nomRue,
+                                            codePostal, ville, tel, email, commentaire,
+                                            dateProspection, interet);
+
                                     JOptionPane.showMessageDialog(
                                             null, "Le prospect a bien été modifié");
                                     dispose();
@@ -286,9 +293,9 @@ public class CrudFrame extends JFrame {
                             if (choixSupprimer == JOptionPane.YES_OPTION) {
                                 switch (choix) {
                                     case CLIENTS:
-                                        Clients.getListClients().remove(choixSociete);
+                                        DAOClient.delete(Integer.parseInt(textFieldId.getText()));
                                     case PROSPECTS:
-                                        Prospects.getListProspects().remove(choixSociete);
+                                        DAOProspect.delete(Integer.parseInt(textFieldId.getText()));
                                 }
                                 JOptionPane.showMessageDialog(
                                         null, "La société a bien été supprimée");

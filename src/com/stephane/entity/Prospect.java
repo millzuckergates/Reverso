@@ -14,9 +14,12 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Prospect extends Societe{
-    private static int idProspect = 0;
     private LocalDate dateProspection = LocalDate.now();
     private String interet;
+
+    public Prospect(){
+        super();
+    };
 
     /**
      * @param raisonSociale Le nom de l'entreprise
@@ -31,12 +34,11 @@ public class Prospect extends Societe{
      * @param interet Interessement du client (Oui ou Non)
      * @throws ReversoException
      */
-    public Prospect(int id,String raisonSociale,String numRue,String rue,
+    public Prospect(String raisonSociale,String numRue,String rue,
             String codePostal,String ville,String tel,String email,
             String commentaire, LocalDate dateProspection,String interet)
             throws ReversoException{
         super(raisonSociale,numRue,rue,codePostal,ville,tel,email,commentaire);
-        idProspect++;
         this.setDateProspection(dateProspection);
         this.setInteret(interet);
     }
@@ -60,14 +62,6 @@ public class Prospect extends Societe{
         }else{
             throw new ReversoException("Le paramètre 'interet' doit être 'Oui' ou 'Non'");
         }
-    }
-
-    public static int getIdProspect(){
-        return idProspect;
-    }
-
-    public static void setIdProspect(int idProspect){
-        Prospect.idProspect = idProspect;
     }
 
     @Override

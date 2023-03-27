@@ -16,6 +16,7 @@ package com.stephane.frame;
 
 import com.stephane.dao.DAOClient;
 import com.stephane.dao.DAOException;
+import com.stephane.dao.DAOProspect;
 import com.stephane.entity.*;
 import com.stephane.exceptions.ReversoException;
 
@@ -91,12 +92,16 @@ public class ListFrame extends JFrame{
                 case CLIENTS:
                     ArrayList<Client> clients = DAOClient.findAll();
                     for(Client client : clients){
-                        modele.addRow(new Object[]{client.getIdClient(),client.getRaisonSociale(),client.getNumRue(),client.getRue(),client.getCodePostal(),client.getVille(),client.getTel(),client.getEmail(),client.getChiffreAffaires(),client.getNbEmployes()});
+                        modele.addRow(new Object[]{
+                                client.getIdSociete(),
+                                client.getRaisonSociale(),
+                                client.getNumRue(),client.getRue(),client.getCodePostal(),client.getVille(),client.getTel(),client.getEmail(),client.getChiffreAffaires(),client.getNbEmployes()});
                     }
                     break;
                 case PROSPECTS:
-                    for(Prospect prospect : Prospects.getListProspects()){
-                        modele.addRow(new Object[]{prospect.getIdProspect(),prospect.getRaisonSociale(),prospect.getNumRue(),prospect.getRue(),prospect.getCodePostal(),prospect.getVille(),prospect.getTel(),prospect.getEmail(),prospect.getDateProspection().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),prospect.getInteret()});
+                    ArrayList<Prospect> prospects = DAOProspect.findAll();
+                    for(Prospect prospect : prospects){
+                        modele.addRow(new Object[]{prospect.getIdSociete(),prospect.getRaisonSociale(),prospect.getNumRue(),prospect.getRue(),prospect.getCodePostal(),prospect.getVille(),prospect.getTel(),prospect.getEmail(),prospect.getDateProspection().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),prospect.getInteret()});
                     }
                     break;
             }
