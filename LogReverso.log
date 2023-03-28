@@ -131,3 +131,59 @@
 27/03/2023 13:30:59 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
 27/03/2023 13:31:54 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 27/03/2023 19:17:28 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 09:37:56 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 09:38:10 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 09:39:59 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 09:41:17 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 10:36:03 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 10:36:17 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 10:36:26 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 10:38:17 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 10:38:27 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 10:38:40 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 10:43:54 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 10:45:23 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 10:57:38 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 10:59:02 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 10:59:14 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:00:51 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:00:57 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:01:05 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:01:40 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:01:46 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:02:51 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:02:57 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:03:04 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:09:01 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:09:05 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:09:16 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:10:12 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:10:19 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:10:28 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:13:41 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:13:46 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:13:55 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:14:35 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:14:40 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:14:48 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:20:36 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:20:40 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:21:07 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:25:50 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:25:56 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:26:04 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:51:55 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:52:02 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:52:18 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 11:52:23 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 11:52:44 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 11:52:54 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 12:48:59 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 12:49:07 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 12:50:02 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 12:51:16 Level : SEVERE / Message : Probleme avec la base de donnéesNo value specified for parameter 1 / Classe : com.stephane.dao.DAOContrat / Méthode : findByIdClient
+28/03/2023 12:55:02 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 12:55:53 Level : SEVERE / Message : Erreur fatale.null / Classe : com.stephane.frame.ContratFrame / Méthode : initTable
+28/03/2023 12:56:39 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+28/03/2023 12:56:47 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+28/03/2023 12:57:31 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main

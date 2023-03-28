@@ -1,6 +1,7 @@
 package com.stephane.dao;
 
 import com.stephane.entity.Client;
+import com.stephane.entity.Contrat;
 import com.stephane.exceptions.ReversoException;
 import com.stephane.logs.LoggerReverso;
 import static com.stephane.logs.LoggerReverso.LOGGER;
@@ -71,6 +72,34 @@ public class DAOClient{
                 String commentaire = rs.getString("commentaire");
                 Double chiffreAffaires = rs.getDouble("chiffre_affaires");
                 Integer nb_employes = rs.getInt("nb_employes");
+
+                ArrayList<Contrat> contrats = new ArrayList<>();
+                PreparedStatement contratsStmt = con.prepareStatement("SELECT * FROM contrats WHERE id_client = ?");
+                contratsStmt.setInt(1, resultId);
+                ResultSet contratsRs = contratsStmt.executeQuery();
+                while (contratsRs.next()) {
+                    Contrat contrat = new Contrat();
+                    contrat.setId(contratsRs.getInt("id"));
+                    contrat.setIdClient(contratsRs.getInt("id_client"));
+                    contrat.setLibelleContrat(contratsRs.getString("libelle_contrat"));
+                    contrat.setMontantContrat(contratsRs.getDouble("montant_contrat"));
+                    contrats.add(contrat);
+                }
+
+                // Création de l'objet Client avec la liste des contrats récupérée
+                    Client client = new Client();
+                    client.setIdSociete(resultId);
+                    client.setRaisonSociale(raisonSociale);
+                    client.setNumRue(numRue);
+                    client.setRue(rue);
+                    client.setCodePostal(codePostal);
+                    client.setVille(ville);
+                    client.setTel(tel);
+                    client.setEmail(email);
+                    client.setCommentaire(commentaire);
+                    client.setChiffreAffaires(chiffreAffaires);
+                    client.setNbEmployes(nb_employes);
+                    client.setListContrats(contrats);
             }
         }catch(SQLException se){
             LOGGER.log(Level.SEVERE, "Erreur : Problème avec la méthode find");

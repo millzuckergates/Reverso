@@ -18,7 +18,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.logging.Level;
 
 import static com.stephane.logs.LoggerReverso.LOGGER;
@@ -39,6 +38,7 @@ public class HomeFrame extends JFrame{
     private JLabel choixLabel;
     private JLabel titreLabel;
     private JPanel choixPanel;
+    private JButton contratsButton;
     private JButton menuPrincipalButton;
     private Choix choix;
     private Crud crud;
@@ -85,6 +85,7 @@ public class HomeFrame extends JFrame{
                 affichageCrud();
                 choixLabel.setText("Gestion des prospects");
                 homePanelListe.setVisible(false);
+                contratsButton.setVisible(false);
                 // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
@@ -117,6 +118,7 @@ public class HomeFrame extends JFrame{
                 affichageCrud();
                 choixLabel.setText("Gestion des clients");
                 homePanelListe.setVisible(false);
+                contratsButton.setVisible(true);
                 // Réinitialisation de la combobox (évite l'affichage en double)
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
@@ -192,6 +194,18 @@ public class HomeFrame extends JFrame{
         });
 
         /**
+         * Clic sur le bouton Contrats
+         */
+        contratsButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                homePanelListe.setVisible(true);
+                validerButton.setText("Voir les contrats");
+                crud = Crud.CONTRATS;
+            }
+        });
+
+        /**
          * Clic sur le bouton Supprimer
          */
         supprimerButton.addActionListener(new ActionListener(){
@@ -226,6 +240,17 @@ public class HomeFrame extends JFrame{
                                         break;
                                 }
                                 CrudFrame crudModifierSupprimer = new CrudFrame(choix,choixSociete,crud);
+                            case CONTRATS:
+                                if(crud == Crud.CONTRATS){
+                                    validerButton.getText().equals("Voir les contrats");
+                                }
+                                switch(choix){
+                                    case CLIENTS:
+                                        choixSociete = (Societe)comboBox.getSelectedItem();
+                                        dispose();
+                                        break;
+                                }
+                                ContratFrame contratFrame = new ContratFrame(choixSociete);
                         }
                 }
         });

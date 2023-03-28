@@ -11,5 +11,6 @@ public enum Crud{
     AJOUTER,
     MODIFIER,
     SUPPRIMER,
+    CONTRATS,
     LISTE
 }

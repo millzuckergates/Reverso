@@ -15,6 +15,7 @@ public class Client extends Societe{
     private Integer idClient;
     private double chiffreAffaires;
     private int nbEmployes;
+    private ArrayList<Contrat> listContrats;
 
     public Client(){
         super();
@@ -89,5 +90,13 @@ public class Client extends Societe{
     public String toString(){
         return super.toString() + "Client{" + "chiffreAffaires=" +
                 chiffreAffaires + ", nbEmployes=" + nbEmployes + '}';
+    }
+
+    public ArrayList<Contrat> getListContrats(){
+        return listContrats;
+    }
+
+    public void setListContrats(ArrayList<Contrat> listContrats){
+        this.listContrats = listContrats;
     }
 }
