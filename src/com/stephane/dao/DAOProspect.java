@@ -14,7 +14,7 @@ public class DAOProspect{
             throws ReversoException, DAOException {
         ArrayList<Prospect> prospects = new ArrayList<>();
         // On récupère la connexion à la db
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM prospects";
 
@@ -51,7 +51,7 @@ public class DAOProspect{
     }
 
     public static void find(int id) throws ReversoException, DAOException{
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients WHERE id = ?";
         try{
@@ -84,7 +84,7 @@ public class DAOProspect{
             String email, String commentaire, LocalDate dateProspection,
             String interet) throws ReversoException, DAOException{
         try {
-            Connection con = ConnexionManager.connection;
+            Connection con = ConnexionManager.getInstance().getConnection();
             PreparedStatement stmt = null;
             String query;
 
@@ -129,7 +129,7 @@ public class DAOProspect{
     }
 
     public static void delete(int id) throws DAOException {
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "DELETE FROM prospects WHERE id = ?";
 

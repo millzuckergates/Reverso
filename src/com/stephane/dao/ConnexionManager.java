@@ -12,29 +12,13 @@ import java.util.logging.Level;
 import static com.stephane.logs.LoggerReverso.LOGGER;
 
 public class ConnexionManager {
-        public static Connection connection = null;
-        static{
-         Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run()
-            {
-                if (connection != null) {
-                    try {
-                        LOGGER.info("Database fermée");
-                        connection.close();
+    private static ConnexionManager instance;
+    private Connection connection;
 
-                    } catch (SQLException ex) {
-                        //LOGGER.fatal(ex.getMessage());
-                    }
-                }
-            }
-         });
-        }
-
-    public ConnexionManager() throws DAOException{
+    private ConnexionManager() throws DAOException {
         try{
             // Instanciation de la classe Properties (lire les infos du fichier)
             final Properties dataProperties = new Properties();
-
 
             File fichier = new File("database.properties");
             FileInputStream input = new FileInputStream(fichier);
@@ -46,7 +30,22 @@ public class ConnexionManager {
                     dataProperties.getProperty("password")
             );
 
-        //Exception pour la lecture/ecriture d'un fichier
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run()
+                {
+                    if (connection != null) {
+                        try {
+                            LOGGER.info("Database fermée");
+                            connection.close();
+
+                        } catch (SQLException ex) {
+                            //LOGGER.fatal(ex.getMessage());
+                        }
+                    }
+                }
+            });
+
+            //Exception pour la lecture/ecriture d'un fichier
         }catch(IOException ie){
             LOGGER.log(Level.SEVERE,"Probleme de lecture du fichier database.properties"
                     + ie.getMessage());
@@ -63,4 +62,14 @@ public class ConnexionManager {
         }
     }
 
+    public static ConnexionManager getInstance() throws DAOException {
+        if (instance == null) {
+            instance = new ConnexionManager();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
 }

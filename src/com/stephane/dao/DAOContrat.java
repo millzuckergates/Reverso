@@ -16,7 +16,7 @@ public class DAOContrat{
     public static ArrayList<Contrat> findByIdClient(int id_client) throws DAOException{
         ArrayList<Contrat> contrats = new ArrayList<>();
         try{
-            Connection con = ConnexionManager.connection;
+            Connection con = ConnexionManager.getInstance().getConnection();
             PreparedStatement stmt = null;
             String query = "SELECT * FROM contrats WHERE id_client = ?";
             stmt = con.prepareStatement(query);

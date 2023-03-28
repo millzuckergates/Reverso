@@ -18,7 +18,7 @@ public class DAOClient{
             throws ReversoException, DAOException {
         ArrayList<Client> clients = new ArrayList<>();
         // On récupère la connexion à la db
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients";
 
@@ -52,7 +52,7 @@ public class DAOClient{
     }
 
     public static void find(int id) throws ReversoException, DAOException{
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients WHERE id = ?";
         try{
@@ -112,7 +112,7 @@ public class DAOClient{
             String email, String commentaire, Double chiffreAffaires,
             int nb_employes) throws ReversoException, DAOException{
         try {
-            Connection con = ConnexionManager.connection;
+            Connection con = ConnexionManager.getInstance().getConnection();
             PreparedStatement stmt = null;
             String query;
 
@@ -156,7 +156,7 @@ public class DAOClient{
     }
 
     public static void delete(int id) throws DAOException {
-        Connection con = ConnexionManager.connection;
+        Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "DELETE FROM clients WHERE id = ?";
 
