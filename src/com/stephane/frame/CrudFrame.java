@@ -8,6 +8,7 @@
 
 package com.stephane.frame;
 
+import com.stephane.dao.DAO;
 import com.stephane.dao.DAOClient;
 import com.stephane.dao.DAOException;
 import com.stephane.dao.DAOProspect;
@@ -219,9 +220,22 @@ public class CrudFrame extends JFrame {
                                     LocalDate dateProspection =
                                             LocalDate.parse(replace, formatter);
                                     String interet = textFieldInteret.getText();
-                                    DAOProspect.save(null, raisonSociale, numeroRue, nomRue,
-                                            codePostal, ville, tel, email, commentaire,
-                                            dateProspection, interet);
+
+                                    Prospect prospect = new Prospect();
+                                    prospect.setRaisonSociale(raisonSociale);
+                                    prospect.setNumRue(numeroRue);
+                                    prospect.setRue(nomRue);
+                                    prospect.setCodePostal(codePostal);
+                                    prospect.setVille(ville);
+                                    prospect.setTel(tel);
+                                    prospect.setEmail(email);
+                                    prospect.setCommentaire(commentaire);
+                                    prospect.setDateProspection(dateProspection);
+                                    prospect.setInteret(interet);
+                                    DAOProspect daoProspect = new DAOProspect();
+
+                                    daoProspect.save(null, prospect);
+//
 
                                     // Ajoute le prospect dans la lise
                                     JOptionPane.showMessageDialog(
@@ -235,9 +249,20 @@ public class CrudFrame extends JFrame {
                                             Double.parseDouble(textFieldChiffreAffaires.getText());
                                     int nombreEmployes =
                                             Integer.parseInt(textFieldNombreEmployes.getText());
-                                    DAOClient.save(null, raisonSociale, numeroRue, nomRue,
-                                            codePostal, ville, tel, email, commentaire,
-                                            chiffreAffaires, nombreEmployes);
+                                    Client client = new Client();
+                                    client.setRaisonSociale(raisonSociale);
+                                    client.setNumRue(numeroRue);
+                                    client.setRue(nomRue);
+                                    client.setCodePostal(codePostal);
+                                    client.setVille(ville);
+                                    client.setTel(tel);
+                                    client.setEmail(email);
+                                    client.setCommentaire(commentaire);
+                                    client.setChiffreAffaires(chiffreAffaires);
+                                    client.setNbEmployes(nombreEmployes);
+                                    DAOClient daoClient = new DAOClient();
+
+                                    daoClient.save(null, client);
                                     JOptionPane.showMessageDialog(
                                             null, "Le client a bien été ajouté");
                                     dispose();
@@ -258,9 +283,9 @@ public class CrudFrame extends JFrame {
                                     choixClient.setChiffreAffaires(chiffreAffaires);
                                     choixClient.setNbEmployes(nombreEmployes);
                                     int clientId = choixClient.getIdSociete();
-                                    DAOClient.save(clientId, raisonSociale, numeroRue, nomRue,
-                                            codePostal, ville, tel, email, commentaire,
-                                            chiffreAffaires, nombreEmployes);
+//                                    DAOClient.save(clientId, raisonSociale, numeroRue, nomRue,
+//                                            codePostal, ville, tel, email, commentaire,
+//                                            chiffreAffaires, nombreEmployes);
 
                                     JOptionPane.showMessageDialog(
                                             null, "Le client a bien été modifié");
@@ -275,9 +300,10 @@ public class CrudFrame extends JFrame {
                                     choixProspect.setDateProspection(dateProspection);
                                     choixProspect.setInteret(interet);
                                     int prospectId = choixProspect.getIdSociete();
-                                    DAOProspect.save(prospectId, raisonSociale, numeroRue, nomRue,
-                                            codePostal, ville, tel, email, commentaire,
-                                            dateProspection, interet);
+
+//                                    DAOProspect.save(prospectId, raisonSociale, numeroRue, nomRue,
+//                                            codePostal, ville, tel, email, commentaire,
+//                                            dateProspection, interet);
 
                                     JOptionPane.showMessageDialog(
                                             null, "Le prospect a bien été modifié");
@@ -293,9 +319,11 @@ public class CrudFrame extends JFrame {
                             if (choixSupprimer == JOptionPane.YES_OPTION) {
                                 switch (choix) {
                                     case CLIENTS:
-                                        DAOClient.delete(Integer.parseInt(textFieldId.getText()));
+                                        DAOClient daoClient = new DAOClient();
+                                        daoClient.delete(Integer.parseInt(textFieldId.getText()));
                                     case PROSPECTS:
-                                        DAOProspect.delete(Integer.parseInt(textFieldId.getText()));
+                                        DAOProspect daoProspect = new DAOProspect();
+                                        daoProspect.delete(Integer.parseInt(textFieldId.getText()));
                                 }
                                 JOptionPane.showMessageDialog(
                                         null, "La société a bien été supprimée");

@@ -187,3 +187,33 @@
 28/03/2023 12:56:39 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
 28/03/2023 12:56:47 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
 28/03/2023 12:57:31 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 13:49:27 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 14:18:21 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 14:18:32 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 14:23:42 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 14:23:50 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 14:37:50 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 14:48:11 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 14:48:49 Level : SEVERE / Message : Problème avec la base Parameter index out of range (11 > number of parameters, which is 10). / Classe : com.stephane.dao.DAOProspect / Méthode : save
+29/03/2023 15:01:39 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:01:46 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 15:16:51 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:17:58 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 15:18:27 Level : SEVERE / Message : Problème avec la base Parameter index out of range (11 > number of parameters, which is 10). / Classe : com.stephane.dao.DAOProspect / Méthode : save
+29/03/2023 15:21:58 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:22:38 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 15:23:09 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:30:13 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 15:31:05 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:34:59 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 15:35:48 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 15:51:59 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:11:28 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:12:50 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:17:17 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 16:17:25 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:19:07 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 16:19:15 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:32:30 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run
+29/03/2023 16:32:43 Level : SEVERE / Message : Un utilisateur s'est connecté / Classe : Main / Méthode : main
+29/03/2023 16:33:12 Level : INFO / Message : Database fermée / Classe : com.stephane.dao.ConnexionManager$1 / Méthode : run

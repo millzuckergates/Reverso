@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-public class DAOClient{
-    public static ArrayList<Client> findAll()
+public class DAOClient extends DAO<Client>{
+    public ArrayList<Client> findAll()
             throws ReversoException, DAOException {
         ArrayList<Client> clients = new ArrayList<>();
         // On récupère la connexion à la db
@@ -51,7 +51,7 @@ public class DAOClient{
         return clients;
     }
 
-    public static void find(int id) throws ReversoException, DAOException{
+    public void find(int id) throws ReversoException, DAOException{
         Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients WHERE id = ?";
@@ -107,10 +107,7 @@ public class DAOClient{
         }
     }
 
-    public static void save(Integer id, String raisonSociale, String numRue,
-            String rue, String codePostal, String ville, String tel,
-            String email, String commentaire, Double chiffreAffaires,
-            int nb_employes) throws ReversoException, DAOException{
+    public void save(Integer id, Client client) throws ReversoException, DAOException{
         try {
             Connection con = ConnexionManager.getInstance().getConnection();
             PreparedStatement stmt = null;
@@ -127,16 +124,16 @@ public class DAOClient{
                         "WHERE id = ?";
             }
             stmt = con.prepareStatement(query);
-            stmt.setString(1, raisonSociale);
-            stmt.setString(2, numRue);
-            stmt.setString(3, rue);
-            stmt.setString(4, codePostal);
-            stmt.setString(5, ville);
-            stmt.setString(6, tel);
-            stmt.setString(7, email);
-            stmt.setString(8, commentaire);
-            stmt.setDouble(9, chiffreAffaires);
-            stmt.setInt(10, nb_employes);
+            stmt.setString(1, client.getRaisonSociale());
+            stmt.setString(2, client.getNumRue());
+            stmt.setString(3, client.getRue());
+            stmt.setString(4, client.getCodePostal());
+            stmt.setString(5, client.getVille());
+            stmt.setString(6, client.getTel());
+            stmt.setString(7, client.getEmail());
+            stmt.setString(8, client.getCommentaire());
+            stmt.setDouble(9, client.getChiffreAffaires());
+            stmt.setInt(10, client.getNbEmployes());
 
             if (id != null) {
                 stmt.setInt(11, id);
@@ -147,7 +144,7 @@ public class DAOClient{
         }catch(SQLException se) {
             if(se.getErrorCode() == 1062){
                 LOGGER.log(Level.INFO,("Erreur : " + se.getErrorCode() + " " + se.getCause()));
-                throw new DAOException("La raison sociale '" + raisonSociale + "existe déjà.", 1);
+                throw new DAOException("La raison sociale existe déjà.", 1);
             }else{
                 LOGGER.log(Level.SEVERE, ("Problème avec la base " + se.getMessage()));
                 throw new DAOException(se.getMessage(), 5);
@@ -155,7 +152,7 @@ public class DAOClient{
         }
     }
 
-    public static void delete(int id) throws DAOException {
+    public void delete(int id) throws DAOException {
         Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "DELETE FROM clients WHERE id = ?";

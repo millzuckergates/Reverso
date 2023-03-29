@@ -90,7 +90,8 @@ public class HomeFrame extends JFrame{
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
                 try{
-                    for(Prospect prospect : DAOProspect.findAll()){
+                    DAOProspect DaoProspect = new DAOProspect();
+                    for(Prospect prospect : DaoProspect.findAll()){
                         comboBox.addItem(prospect);
                     }
                 }catch(ReversoException re){
@@ -123,7 +124,8 @@ public class HomeFrame extends JFrame{
                 comboBox.removeAllItems();
                 // Remplissage de la combobox
                 try{
-                    for(Client client : DAOClient.findAll()){
+                    DAOClient DaoClient = new DAOClient();
+                    for(Client client : DaoClient.findAll()){
                         comboBox.addItem(client);
                     }
                 }catch(ReversoException re){
@@ -214,6 +216,7 @@ public class HomeFrame extends JFrame{
                 homePanelListe.setVisible(true);
                 validerButton.setText("Supprimer");
                 crud = Crud.SUPPRIMER;
+                System.out.println(crud);
             }
         });
 
@@ -230,6 +233,7 @@ public class HomeFrame extends JFrame{
                                 }
                                 if(crud == Crud.SUPPRIMER){
                                     validerButton.getText().equals("Supprimer");
+                                    titreLabel.setText("SUPPRIMER");
                                 }
                                 int index = comboBox.getSelectedIndex();
                                 switch(choix){
@@ -240,6 +244,7 @@ public class HomeFrame extends JFrame{
                                         break;
                                 }
                                 CrudFrame crudModifierSupprimer = new CrudFrame(choix,choixSociete,crud);
+                                break;
                             case CONTRATS:
                                 if(crud == Crud.CONTRATS){
                                     validerButton.getText().equals("Voir les contrats");
@@ -251,6 +256,7 @@ public class HomeFrame extends JFrame{
                                         break;
                                 }
                                 ContratFrame contratFrame = new ContratFrame(choixSociete);
+                            break;
                         }
                 }
         });

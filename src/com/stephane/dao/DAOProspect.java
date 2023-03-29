@@ -7,10 +7,11 @@ import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 
-public class DAOProspect{
-    public static ArrayList<Prospect> findAll()
+public class DAOProspect extends DAO<Prospect>{
+    public ArrayList<Prospect> findAll()
             throws ReversoException, DAOException {
         ArrayList<Prospect> prospects = new ArrayList<>();
         // On récupère la connexion à la db
@@ -50,7 +51,7 @@ public class DAOProspect{
         return prospects;
     }
 
-    public static void find(int id) throws ReversoException, DAOException{
+    public void find(int id) throws ReversoException, DAOException{
         Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "SELECT * FROM clients WHERE id = ?";
@@ -79,10 +80,7 @@ public class DAOProspect{
         }
     }
 
-    public static void save(Integer id, String raisonSociale, String numRue,
-            String rue, String codePostal, String ville, String tel,
-            String email, String commentaire, LocalDate dateProspection,
-            String interet) throws ReversoException, DAOException{
+    public void save(Integer id, Prospect prospect) throws ReversoException, DAOException{
         try {
             Connection con = ConnexionManager.getInstance().getConnection();
             PreparedStatement stmt = null;
@@ -99,17 +97,17 @@ public class DAOProspect{
                         "WHERE id = ?";
             }
             stmt = con.prepareStatement(query);
-            stmt.setString(1, raisonSociale);
-            stmt.setString(2, numRue);
-            stmt.setString(3, rue);
-            stmt.setString(4, codePostal);
-            stmt.setString(5, ville);
-            stmt.setString(6, tel);
-            stmt.setString(7, email);
-            stmt.setString(8, commentaire);
-            Date dateProspectionSql = Date.valueOf(dateProspection);
+            stmt.setString(1, prospect.getRaisonSociale());
+            stmt.setString(2, prospect.getNumRue());
+            stmt.setString(3, prospect.getRue());
+            stmt.setString(4, prospect.getCodePostal());
+            stmt.setString(5, prospect.getVille());
+            stmt.setString(6, prospect.getTel());
+            stmt.setString(7, prospect.getEmail());
+            stmt.setString(8, prospect.getCommentaire());
+            Date dateProspectionSql = Date.valueOf(prospect.getDateProspection());
             stmt.setDate(9, dateProspectionSql);
-            stmt.setString(10, interet);
+            stmt.setString(10,prospect.getInteret());
 
             if (id != null) {
                 stmt.setInt(11, id);
@@ -120,7 +118,7 @@ public class DAOProspect{
         }catch(SQLException se) {
             if(se.getErrorCode() == 1062){
                 LOGGER.log(Level.INFO,("Erreur : " + se.getErrorCode() + " " + se.getCause()));
-                throw new DAOException("La raison sociale '" + raisonSociale + "existe déjà.", 1);
+                throw new DAOException("La raison sociale existe déjà.", 1);
             }else{
                 LOGGER.log(Level.SEVERE, ("Problème avec la base " + se.getMessage()));
                 throw new DAOException(se.getMessage(), 5);
@@ -128,7 +126,7 @@ public class DAOProspect{
         }
     }
 
-    public static void delete(int id) throws DAOException {
+    public void delete(int id) throws DAOException {
         Connection con = ConnexionManager.getInstance().getConnection();
         PreparedStatement stmt = null;
         String query = "DELETE FROM prospects WHERE id = ?";

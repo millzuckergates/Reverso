@@ -6,6 +6,7 @@ import com.stephane.frame.HomeFrame;
 import com.stephane.logs.FormatterLog;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -14,10 +15,8 @@ import static com.stephane.logs.LoggerReverso.LOGGER;
 
 public class Main{
     public static void main(String[] args) throws DAOException, ReversoException, IOException{
-            new ConnexionManager();
-//            DAOClient.save(null, "Testll", "4", "grande",
-//                    "54637", "doui", "3434343434", "q@q.fr", "wer", 123.123, 1233);
-            DAOClient.findAll();
+        Connection con = ConnexionManager.getInstance().getConnection();
+
             FileHandler fh = new FileHandler("LogReverso.log", true);
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(fh);

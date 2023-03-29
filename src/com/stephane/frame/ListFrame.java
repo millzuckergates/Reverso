@@ -90,7 +90,8 @@ public class ListFrame extends JFrame{
 
             switch(choix){
                 case CLIENTS:
-                    ArrayList<Client> clients = DAOClient.findAll();
+                    DAOClient DaoClient = new DAOClient();
+                    ArrayList<Client> clients = DaoClient.findAll();
                     for(Client client : clients){
                         modele.addRow(new Object[]{
                                 client.getIdSociete(),
@@ -99,7 +100,8 @@ public class ListFrame extends JFrame{
                     }
                     break;
                 case PROSPECTS:
-                    ArrayList<Prospect> prospects = DAOProspect.findAll();
+                    DAOProspect DaoProspect = new DAOProspect();
+                    ArrayList<Prospect> prospects = DaoProspect.findAll();
                     for(Prospect prospect : prospects){
                         modele.addRow(new Object[]{prospect.getIdSociete(),prospect.getRaisonSociale(),prospect.getNumRue(),prospect.getRue(),prospect.getCodePostal(),prospect.getVille(),prospect.getTel(),prospect.getEmail(),prospect.getDateProspection().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),prospect.getInteret()});
                     }
